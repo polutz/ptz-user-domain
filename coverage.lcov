@@ -1,5 +1,5 @@
 TN:
-SF:/projects/Polutz/ptz-user-domain/dist/User.js
+SF:/projects/polutz/ptz-user-domain/dist/User.js
 FN:7,(anonymous_2)
 FN:7,defineProperties
 FN:7,(anonymous_4)
@@ -152,7 +152,7 @@ BRF:61
 BRH:33
 end_of_record
 TN:
-SF:/projects/Polutz/ptz-user-domain/dist/index.js
+SF:/projects/polutz/ptz-user-domain/dist/index.js
 FN:12,_interopRequireDefault
 FNF:1
 FNH:1
