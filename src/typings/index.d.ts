@@ -1,5 +1,6 @@
 /// <reference path="./IUser.d.ts" />
 /// <reference path="./IUserRepository.d.ts" />
+/// <reference path="./IUserApp.d.ts" />
 
 declare module ptzUserDomain {
     class User implements IUser {
