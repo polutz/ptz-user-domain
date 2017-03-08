@@ -29,6 +29,18 @@ Metodologias: TDD (Test Driven Development), DDD (Domain Driven Design).
 
 Tools: Docker, Typescript, babel, webpack, mocha, gulp.
 
+## How to use in your project
+
+```
+    npm install ptz-user-domain --save
+```
+
+To enable Typescript support, add to your typings/index.d.ts
+```
+    /// <reference path="../node_modules/ptz-user-domain/src/typings/index.d.ts" />
+```
+
+
 ## Prerequisites
 
 1. Latest version of Node to be installed.
