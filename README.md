@@ -13,13 +13,25 @@ Sinta-se livre para usar em seus projetos, e contribuir!
 Nessa camada de Domínio (Domain), a ideia é utilizar o minimo possível de dependências, 
 tentando ficar ao máximo com javascript puro.
 
+## Polutz modules
+
+### Core
 Core Domain: https://github.com/polutz/ptz-core-domain
 
-User Domain: https://github.com/polutz/ptz-user-domain
+Core Graphql: https://github.com/polutz/ptz-core-graphql
+
+### User
+User Domain: https://github.com/polutz/ptz-user-app
 
 User Repository: https://github.com/polutz/ptz-user-repository
 
+User App: https://github.com/polutz/ptz-user-app
+
+User Graphql: https://github.com/polutz/ptz-user-graphql
+
+### Projects
 Projeto que utiliza os modulos acima: https://github.com/angeloocana/freecomclub
+
 
 Tarefas: https://trello.com/b/w9BqiPdz/frecom-club
 
