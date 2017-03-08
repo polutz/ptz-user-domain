@@ -93,7 +93,7 @@ describe('User', () => {
         });
 
         it('Should update dtChanged', () => {
-            newUser.dtChanged = new Date('1992-01-07');
+            newUser.dtChanged = new Date('1992-06-28');
 
             ok(updatedUser.dtChanged);
             ok(updatedUser.dtChanged > newUser.dtChanged);

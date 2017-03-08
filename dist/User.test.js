@@ -84,7 +84,7 @@ describe('User', function () {
             (0, _ptzAssert.notEqual)(newUser.createdBy, updatedUser.createdBy);
         });
         it('Should update dtChanged', function () {
-            newUser.dtChanged = new Date('1992-01-07');
+            newUser.dtChanged = new Date('1992-06-28');
             (0, _ptzAssert.ok)(updatedUser.dtChanged);
             (0, _ptzAssert.ok)(updatedUser.dtChanged > newUser.dtChanged);
         });
