@@ -9,7 +9,7 @@ interface IUser extends IEntityBase {
     accessToken?: string;
 
     update(user:IUser):IUser;
-    otherUsersWithSameUserNameOrEmail(users: IUser[]): boolean;
+    otherUsersWithSameUserNameOrEmail(users: IUserArgs[]): boolean;
 }
 
 interface IUserArgs extends IEntityBaseArgs {

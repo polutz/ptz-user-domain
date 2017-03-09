@@ -1,5 +1,6 @@
 import User from './User';
-import { contains, notContains, equal, notEqual, ok } from 'ptz-assert';
+import errors from './errors';
+import { contains, notContains, equal, notEqual, ok, notOk, emptyArray } from 'ptz-assert';
 
 describe('User', () => {
     describe('UserName', () => {
@@ -129,7 +130,56 @@ describe('User', () => {
         });
     });
 
-    describe('New Test Test',()=>{
-        ok(true);
+    describe('otherUsersWithSameUserNameOrEmail', ()=> {
+        it('should return false when otherUsers is empty', () => {
+            var user = new User({
+                userName: 'allanegidio',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            });
+
+            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([]);
+
+            notOk(thereIsOtherUsers);
+            emptyArray(user.errors);
+        });
+
+        it('should return true and addError when userName already in use', () => {
+            var user = new User({
+                userName: 'allanegidio',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            });
+
+            var otherUser:IUserArgs = {
+                userName: 'allanegidio',
+                email: 'angeloocana@gmail.com',
+                displayName: 'Angelo Ocana'
+            }
+
+            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
+
+            ok(thereIsOtherUsers);
+            contains(user.errors, errors.ERROR_USER_USERNAME_IN_USE );
+        });
+
+        it('should return true and addError when email already in use', () => {
+            var user = new User({
+                userName: 'allanegidio',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            });
+
+            var otherUser:IUserArgs = {
+                userName: 'angeloocana',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            }
+
+            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
+
+            ok(thereIsOtherUsers);
+            contains(user.errors, errors.ERROR_USER_EMAIL_IN_USE );
+        });
     });
 });

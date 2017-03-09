@@ -10,6 +10,12 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _ptzCoreDomain = require('ptz-core-domain');
 
+var _errors = require('./errors');
+
+var _errors2 = _interopRequireDefault(_errors);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -22,7 +28,7 @@ var User = function (_EntityBase) {
     function User(user) {
         _classCallCheck(this, User);
 
-        if (!user) throw "ERROR_EMPTY_USER";
+        if (!user) throw _errors2.default.ERROR_EMPTY_USER;
 
         var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, user));
 
@@ -40,12 +46,12 @@ var User = function (_EntityBase) {
     _createClass(User, [{
         key: 'validateUserName',
         value: function validateUserName() {
-            if (!this.userName || this.userName.length < 3) this.addError('ERROR_USER_USERNAME_REQUIRED');else this.userName = this.userName.toLowerCase();
+            if (!this.userName || this.userName.length < 3) this.addError(_errors2.default.ERROR_USER_USERNAME_REQUIRED);else this.userName = this.userName.toLowerCase();
         }
     }, {
         key: 'validateEmail',
         value: function validateEmail() {
-            if (!this.email) this.addError('ERROR_USER_EMAIL_REQUIRED');else if (!(0, _ptzCoreDomain.validateEmail)(this.email)) this.addError('ERROR_USER_EMAIL_INVALID');else this.email = this.email.toLowerCase();
+            if (!this.email) this.addError(_errors2.default.ERROR_USER_EMAIL_REQUIRED);else if (!(0, _ptzCoreDomain.validateEmail)(this.email)) this.addError(_errors2.default.ERROR_USER_EMAIL_INVALID);else this.email = this.email.toLowerCase();
         }
     }, {
         key: 'isValid',
@@ -59,18 +65,18 @@ var User = function (_EntityBase) {
         value: function otherUsersWithSameUserNameOrEmail(otherUsers) {
             var _this2 = this;
 
-            if (!otherUsers) return;
+            if (!otherUsers) return false;
             var error = false;
             if (otherUsers.filter(function (user) {
                 return user.userName == _this2.userName;
             }).length > 0) {
-                this.addError('ERROR_USER_USERNAME_IN_USE');
+                this.addError(_errors2.default.ERROR_USER_USERNAME_IN_USE);
                 error = true;
             }
             if (otherUsers.filter(function (user) {
                 return user.email == _this2.email;
             }).length > 0) {
-                this.addError('ERROR_USER_EMAIL_IN_USE');
+                this.addError(_errors2.default.ERROR_USER_EMAIL_IN_USE);
                 error = true;
             }
             return error;
@@ -93,7 +99,7 @@ var User = function (_EntityBase) {
                 userName: userNameOrEmail,
                 email: '',
                 displayName: '',
-                errors: ['ERROR_USER_INVALID_USERNAME_OR_PASSWORD']
+                errors: [_errors2.default.ERROR_USER_INVALID_USERNAME_OR_PASSWORD]
             });
         }
     }]);

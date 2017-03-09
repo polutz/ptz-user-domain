@@ -4,6 +4,10 @@ var _User = require('./User');
 
 var _User2 = _interopRequireDefault(_User);
 
+var _errors = require('./errors');
+
+var _errors2 = _interopRequireDefault(_errors);
+
 var _ptzAssert = require('ptz-assert');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -109,6 +113,48 @@ describe('User', function () {
         });
         it('Should update passwordHash', function () {
             (0, _ptzAssert.equal)(newUser.passwordHash, updatedUser.passwordHash);
+        });
+    });
+    describe('otherUsersWithSameUserNameOrEmail', function () {
+        it('should return false when otherUsers is empty', function () {
+            var user = new _User2.default({
+                userName: 'allanegidio',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            });
+            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([]);
+            (0, _ptzAssert.notOk)(thereIsOtherUsers);
+            (0, _ptzAssert.emptyArray)(user.errors);
+        });
+        it('should return true and addError when userName already in use', function () {
+            var user = new _User2.default({
+                userName: 'allanegidio',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            });
+            var otherUser = {
+                userName: 'allanegidio',
+                email: 'angeloocana@gmail.com',
+                displayName: 'Angelo Ocana'
+            };
+            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
+            (0, _ptzAssert.ok)(thereIsOtherUsers);
+            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_IN_USE);
+        });
+        it('should return true and addError when email already in use', function () {
+            var user = new _User2.default({
+                userName: 'allanegidio',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            });
+            var otherUser = {
+                userName: 'angeloocana',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            };
+            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
+            (0, _ptzAssert.ok)(thereIsOtherUsers);
+            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_EMAIL_IN_USE);
         });
     });
 });
