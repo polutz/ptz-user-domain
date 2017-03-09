@@ -128,4 +128,8 @@ describe('User', () => {
             equal(newUser.passwordHash, updatedUser.passwordHash);
         });
     });
+
+    describe('New Test Test',()=>{
+        ok(true);
+    });
 });
