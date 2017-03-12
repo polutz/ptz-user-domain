@@ -1,6 +1,6 @@
 import User from './User';
 import errors from './errors';
-import { contains, notContains, equal, notEqual, ok, notOk, emptyArray } from 'ptz-assert';
+import { contains, notContains, equal, notEqual, ok, notOk, emptyArray, deepEqual } from 'ptz-assert';
 
 describe('User', () => {
     describe('UserName', () => {
@@ -180,6 +180,14 @@ describe('User', () => {
 
             ok(thereIsOtherUsers);
             contains(user.errors, errors.ERROR_USER_EMAIL_IN_USE );
+        });
+    });
+
+    describe('getUserAthenticationError(userNameOrEmail)', () => {
+        it('should return User Object with authentication error', () => {
+            var userAuthenticationError = User.getUserAthenticationError('allanegidio');
+
+            contains(userAuthenticationError.errors, errors.ERROR_USER_INVALID_USERNAME_OR_PASSWORD);
         });
     });
 });
