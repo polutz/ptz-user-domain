@@ -1,6 +1,7 @@
-import User from './User';
+import { contains, deepEqual, emptyArray, equal, notContains, notEqual, notOk, ok } from 'ptz-assert';
 import errors from './errors';
-import { contains, notContains, equal, notEqual, ok, notOk, emptyArray, deepEqual } from 'ptz-assert';
+import { IUser, IUserArgs } from './typings/IUser';
+import User from './User';
 
 describe('User', () => {
     describe('UserName', () => {
@@ -31,7 +32,6 @@ describe('User', () => {
             var user = new User({ userName: '', email: 'angeloocanagmail.com', displayName: '' });
             contains(user.errors, 'ERROR_USER_EMAIL_INVALID');
         });
-
 
         it('Do not add error when valid email', () => {
             var user = new User({ userName: 'angeloocana', email: 'angeloocana@gmail.com', displayName: '' });
@@ -66,7 +66,7 @@ describe('User', () => {
                     userId: 'Old_Id'
                 }
             });
-            
+
             newUser = new User({
                 id: 'NewId',
                 userName: 'NewUserName',
@@ -130,7 +130,7 @@ describe('User', () => {
         });
     });
 
-    describe('otherUsersWithSameUserNameOrEmail', ()=> {
+    describe('otherUsersWithSameUserNameOrEmail', () => {
         it('should return false when otherUsers is empty', () => {
             var user = new User({
                 userName: 'allanegidio',
@@ -151,16 +151,16 @@ describe('User', () => {
                 displayName: 'Allan Egidio'
             });
 
-            var otherUser:IUserArgs = {
+            var otherUser: IUserArgs = {
                 userName: 'allanegidio',
                 email: 'angeloocana@gmail.com',
                 displayName: 'Angelo Ocana'
-            }
+            };
 
             var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
 
             ok(thereIsOtherUsers);
-            contains(user.errors, errors.ERROR_USER_USERNAME_IN_USE );
+            contains(user.errors, errors.ERROR_USER_USERNAME_IN_USE);
         });
 
         it('should return true and addError when email already in use', () => {
@@ -170,16 +170,16 @@ describe('User', () => {
                 displayName: 'Allan Egidio'
             });
 
-            var otherUser:IUserArgs = {
+            var otherUser: IUserArgs = {
                 userName: 'angeloocana',
                 email: 'allan.egidio@outlook.com',
                 displayName: 'Allan Egidio'
-            }
+            };
 
             var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
 
             ok(thereIsOtherUsers);
-            contains(user.errors, errors.ERROR_USER_EMAIL_IN_USE );
+            contains(user.errors, errors.ERROR_USER_EMAIL_IN_USE);
         });
     });
 

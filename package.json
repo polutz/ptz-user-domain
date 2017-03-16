@@ -4,7 +4,7 @@
   "description": "Polutz User Domain.",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "tslint ./src/**/*.ts",
+    "lint": "tslint ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
     "js": "gulp js",
     "mocha": "mocha ./dist/**/*.js --compilers js:babel-core/register --require babel-polyfill",
     "pretest": "npm-run-all --parallel js lint",
