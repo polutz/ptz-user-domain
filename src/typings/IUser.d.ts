@@ -1,4 +1,4 @@
-interface IUser extends IEntityBase {
+export interface IUser extends IEntityBase {
     userName: string;
     email: string;
     emailConfirmed?: boolean;
@@ -8,11 +8,11 @@ interface IUser extends IEntityBase {
     passwordHash?: string;
     accessToken?: string;
 
-    update(user:IUser):IUser;
+    update(user: IUser): IUser;
     otherUsersWithSameUserNameOrEmail(users: IUserArgs[]): boolean;
 }
 
-interface IUserArgs extends IEntityBaseArgs {
+export interface IUserArgs extends IEntityBaseArgs {
     userName: string;
     email: string;
     emailConfirmed?: boolean;

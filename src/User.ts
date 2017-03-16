@@ -1,7 +1,16 @@
-import { validateEmail, EntityBase } from 'ptz-core-domain';
+import { EntityBase, validateEmail } from 'ptz-core-domain';
 import errors from './errors';
 
 export default class User extends EntityBase implements IUser {
+
+    static getUserAthenticationError(userNameOrEmail: string): IUser {
+        return new User({
+            displayName: '',
+            email: '',
+            errors: [errors.ERROR_USER_INVALID_USERNAME_OR_PASSWORD],
+            userName: userNameOrEmail,
+        });
+    }
 
     userName: string;
     email: string;
@@ -28,13 +37,40 @@ export default class User extends EntityBase implements IUser {
         this.isValid();
     }
 
-    static getUserAthenticationError(userNameOrEmail: string): IUser {
-        return new User({
-            userName: userNameOrEmail,
-            email: '',
-            displayName: '',
-            errors: [errors.ERROR_USER_INVALID_USERNAME_OR_PASSWORD]
-        });
+    isValid(): boolean {
+        this.validateUserName();
+        this.validateEmail();
+
+        return super.isValid();
+    }
+
+    otherUsersWithSameUserNameOrEmail(otherUsers: IUserArgs[]): boolean {
+        if (!otherUsers)
+            return false;
+
+        var error = false;
+
+        if (otherUsers.filter(user => user.userName === this.userName).length > 0) {
+            this.addError(errors.ERROR_USER_USERNAME_IN_USE);
+            error = true;
+        }
+
+        if (otherUsers.filter(user => user.email === this.email).length > 0) {
+            this.addError(errors.ERROR_USER_EMAIL_IN_USE);
+            error = true;
+        }
+
+        return error;
+    }
+
+    update(newUser: IUser): IUser {
+        this.userName = newUser.userName;
+        this.email = newUser.email;
+        this.passwordHash = newUser.passwordHash;
+        this.displayName = newUser.displayName;
+        this.imgUrl = newUser.imgUrl;
+        this.dtChanged = new Date();
+        return this;
     }
 
     private validateUserName() {
@@ -51,41 +87,5 @@ export default class User extends EntityBase implements IUser {
             this.addError(errors.ERROR_USER_EMAIL_INVALID);
         else
             this.email = this.email.toLowerCase();
-    }
-
-    isValid(): boolean {
-        this.validateUserName();
-        this.validateEmail();
-
-        return super.isValid();
-    }
-
-    otherUsersWithSameUserNameOrEmail(otherUsers: IUserArgs[]): boolean {
-        if (!otherUsers)
-            return false;
-
-        var error = false;
-
-        if (otherUsers.filter(user => user.userName == this.userName).length > 0) {
-            this.addError(errors.ERROR_USER_USERNAME_IN_USE);
-            error = true;
-        }
-
-        if (otherUsers.filter(user => user.email == this.email).length > 0) {
-            this.addError(errors.ERROR_USER_EMAIL_IN_USE);
-            error = true;
-        }
-
-        return error;
-    }
-
-    update(newUser:IUser):IUser{
-        this.userName = newUser.userName;
-        this.email = newUser.email;
-        this.passwordHash = newUser.passwordHash;
-        this.displayName = newUser.displayName;
-        this.imgUrl = newUser.imgUrl;
-        this.dtChanged = new Date();
-         return this;
     }
 }

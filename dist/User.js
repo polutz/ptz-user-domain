@@ -4,9 +4,9 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _ptzCoreDomain = require('ptz-core-domain');
 
@@ -24,6 +24,18 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 var User = function (_EntityBase) {
     _inherits(User, _EntityBase);
+
+    _createClass(User, null, [{
+        key: 'getUserAthenticationError',
+        value: function getUserAthenticationError(userNameOrEmail) {
+            return new User({
+                displayName: '',
+                email: '',
+                errors: [_errors2.default.ERROR_USER_INVALID_USERNAME_OR_PASSWORD],
+                userName: userNameOrEmail
+            });
+        }
+    }]);
 
     function User(user) {
         _classCallCheck(this, User);
@@ -44,16 +56,6 @@ var User = function (_EntityBase) {
     }
 
     _createClass(User, [{
-        key: 'validateUserName',
-        value: function validateUserName() {
-            if (!this.userName || this.userName.length < 3) this.addError(_errors2.default.ERROR_USER_USERNAME_REQUIRED);else this.userName = this.userName.toLowerCase();
-        }
-    }, {
-        key: 'validateEmail',
-        value: function validateEmail() {
-            if (!this.email) this.addError(_errors2.default.ERROR_USER_EMAIL_REQUIRED);else if (!(0, _ptzCoreDomain.validateEmail)(this.email)) this.addError(_errors2.default.ERROR_USER_EMAIL_INVALID);else this.email = this.email.toLowerCase();
-        }
-    }, {
         key: 'isValid',
         value: function isValid() {
             this.validateUserName();
@@ -68,13 +70,13 @@ var User = function (_EntityBase) {
             if (!otherUsers) return false;
             var error = false;
             if (otherUsers.filter(function (user) {
-                return user.userName == _this2.userName;
+                return user.userName === _this2.userName;
             }).length > 0) {
                 this.addError(_errors2.default.ERROR_USER_USERNAME_IN_USE);
                 error = true;
             }
             if (otherUsers.filter(function (user) {
-                return user.email == _this2.email;
+                return user.email === _this2.email;
             }).length > 0) {
                 this.addError(_errors2.default.ERROR_USER_EMAIL_IN_USE);
                 error = true;
@@ -92,15 +94,15 @@ var User = function (_EntityBase) {
             this.dtChanged = new Date();
             return this;
         }
-    }], [{
-        key: 'getUserAthenticationError',
-        value: function getUserAthenticationError(userNameOrEmail) {
-            return new User({
-                userName: userNameOrEmail,
-                email: '',
-                displayName: '',
-                errors: [_errors2.default.ERROR_USER_INVALID_USERNAME_OR_PASSWORD]
-            });
+    }, {
+        key: 'validateUserName',
+        value: function validateUserName() {
+            if (!this.userName || this.userName.length < 3) this.addError(_errors2.default.ERROR_USER_USERNAME_REQUIRED);else this.userName = this.userName.toLowerCase();
+        }
+    }, {
+        key: 'validateEmail',
+        value: function validateEmail() {
+            if (!this.email) this.addError(_errors2.default.ERROR_USER_EMAIL_REQUIRED);else if (!(0, _ptzCoreDomain.validateEmail)(this.email)) this.addError(_errors2.default.ERROR_USER_EMAIL_INVALID);else this.email = this.email.toLowerCase();
         }
     }]);
 
