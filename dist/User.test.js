@@ -1,14 +1,14 @@
 'use strict';
 
-var _User = require('./User');
-
-var _User2 = _interopRequireDefault(_User);
+var _ptzAssert = require('ptz-assert');
 
 var _errors = require('./errors');
 
 var _errors2 = _interopRequireDefault(_errors);
 
-var _ptzAssert = require('ptz-assert');
+var _User = require('./User');
+
+var _User2 = _interopRequireDefault(_User);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

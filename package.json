@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/polutz/ptz-user-domain#readme",
   "dependencies": {
-    "ptz-core-domain": "^1.0.1"
+    "ptz-core-domain": "^1.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",
