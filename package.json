@@ -3,6 +3,7 @@
   "version": "1.0.3",
   "description": "Polutz User Domain.",
   "main": "dist/index.js",
+  "typings": "src/index.ts",
   "scripts": {
     "lint": "tslint ./src/*.ts ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
     "js": "gulp js",
