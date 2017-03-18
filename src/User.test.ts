@@ -1,6 +1,6 @@
 import { contains, deepEqual, emptyArray, equal, notContains, notEqual, notOk, ok } from 'ptz-assert';
 import errors from './errors';
-import { IUser, IUserArgs } from './typings/IUser';
+import { IUser, IUserArgs } from './IUser';
 import User from './User';
 
 describe('User', () => {

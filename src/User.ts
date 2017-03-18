@@ -1,6 +1,6 @@
 import { EntityBase, validateEmail } from 'ptz-core-domain';
 import errors from './errors';
-import { IUser, IUserArgs } from './typings/IUser';
+import { IUser, IUserArgs } from './IUser';
 
 export default class User extends EntityBase implements IUser {
 

@@ -4,10 +4,10 @@
   "description": "Polutz User Domain.",
   "main": "dist/index.js",
   "scripts": {
-    "lint": "tslint ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
+    "lint": "tslint ./src/*.ts ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
     "js": "gulp js",
     "pretest": "npm-run-all --parallel js lint",
-    "mocha": "mocha ./dist/**/*.js --compilers js:babel-core/register --require babel-polyfill",    
+    "mocha": "mocha ./dist/**/*.js --compilers js:babel-core/register --require babel-polyfill",
     "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=7a80ed20-dee8-4343-83a9-8dc25398a34c"
   },
   "repository": {
@@ -21,7 +21,7 @@
   },
   "homepage": "https://github.com/polutz/ptz-user-domain#readme",
   "dependencies": {
-    "ptz-core-domain": "^1.0.3"
+    "ptz-core-domain": "^1.1.1"
   },
   "devDependencies": {
     "babel-core": "^6.24.0",

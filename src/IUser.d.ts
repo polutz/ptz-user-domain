@@ -1,3 +1,5 @@
+import { IEntityBase, IEntityBaseArgs } from 'ptz-core-domain';
+
 export interface IUser extends IEntityBase {
     userName: string;
     email: string;
