@@ -4,6 +4,16 @@ import { IUser, IUserArgs } from './IUser';
 
 export default class User extends EntityBase implements IUser {
 
+    static userNameErrors = [
+        errors.ERROR_USER_USERNAME_IN_USE,
+        errors.ERROR_USER_USERNAME_REQUIRED];
+    static emailErrors = [
+        errors.ERROR_USER_EMAIL_IN_USE,
+        errors.ERROR_USER_EMAIL_INVALID,
+        errors.ERROR_USER_EMAIL_REQUIRED];
+    static displayNameErrors = [];
+    static passwordErrors = [];
+
     static getUserAthenticationError(userNameOrEmail: string): IUser {
         return new User({
             displayName: '',
