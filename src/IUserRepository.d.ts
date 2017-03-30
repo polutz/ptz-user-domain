@@ -1,9 +1,7 @@
-import {IUser} from './IUser';
+import { IBaseRepository } from 'ptz-core-domain';
+import { IUser } from './IUser';
 
-export interface IUserRepository {
-    save(user: IUser): Promise<IUser>;
-    find(query: any, options: { limit: number }): Promise<IUser[]>;
+export interface IUserRepository extends IBaseRepository<IUser> {
     getByUserNameOrEmail(userNameOrEmail: string): Promise<IUser>;
     getOtherUsersWithSameUserNameOrEmail(user: IUser): Promise<IUser[]>;
-    getByIds(ids: string[]): Promise<IUser[]>;
 }
