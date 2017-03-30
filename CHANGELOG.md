@@ -1,6 +1,8 @@
 ## master
 
+## 1.1.4 (March 30, 2017)
 
+* Change IUserApp.save param from IUser to IUserArgs
 
 ## 1.1.3 (March 30, 2017)
 
