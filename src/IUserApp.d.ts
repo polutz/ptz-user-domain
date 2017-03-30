@@ -1,7 +1,7 @@
-import { IUser } from './IUser';
+import { IUser, IUserArgs } from './IUser';
 
 export interface IUserApp {
-    save(user: IUser): Promise<IUser>;
+    save(user: IUserArgs): Promise<IUser>;
     find(query: any, options: { limit: number }): Promise<IUser[]>;
 
     authenticateUser(userNameOrEmail: string, password: string): Promise<IUser>;
