@@ -24,11 +24,6 @@
     "url": "https://github.com/polutz/ptz-user-domain/issues"
   },
   "homepage": "https://github.com/polutz/ptz-user-domain#readme",
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
   "dependencies": {
     "ptz-core-domain": "^1.1.4"
   },
@@ -36,6 +31,7 @@
     "babel-core": "^6.24.0",
     "babel-polyfill": "^6.23.0",
     "babel-preset-es2015": "^6.24.0",
+    "babel-register": "^6.24.0",
     "codecov": "^1.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
