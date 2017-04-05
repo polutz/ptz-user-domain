@@ -1,5 +1,11 @@
 ## master
 
+
+## 1.2.0 (April 5, 2017)
+
+* Remove gulp.
+* Add debug support for vs code.
+
 ## 1.1.4 (March 30, 2017)
 
 * Change IUserApp.save param from IUser to IUserArgs
