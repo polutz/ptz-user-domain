@@ -9,7 +9,7 @@
     "lint": "tslint ./src/*.ts ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
     "js": "tsc",
     "pretest": "npm-run-all --parallel js lint",
-    "mocha": "mocha ./dist/**/*.js --require babel-polyfill --compilers js:babel-register",
+    "mocha": "mocha ./dist/**/*.js --require babel-polyfill --compilers js:./ptz-babel-register.js",
     "test": "nyc npm run mocha && nyc report --reporter=text-lcov > coverage.lcov && codecov --token=7a80ed20-dee8-4343-83a9-8dc25398a34c",
     "predebug": "npm run pretest",
     "debug": "babel-node --presets es2015 --nolazy --debug-brk=5858 dist/index.js"
@@ -24,6 +24,11 @@
     "url": "https://github.com/polutz/ptz-user-domain/issues"
   },
   "homepage": "https://github.com/polutz/ptz-user-domain#readme",
+  "babel": {
+    "presets": [
+      "es2015"
+    ]
+  },
   "dependencies": {
     "ptz-core-domain": "^1.1.4"
   },
