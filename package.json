@@ -1,11 +1,10 @@
 {
   "name": "ptz-user-domain",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Polutz User Domain.",
   "main": "dist/index.js",
   "typings": "src/index.ts",
   "scripts": {
-    "postinstall": "typings install",
     "lint": "tslint ./src/*.ts ./src/**/*.ts ./src/**/*.test.ts ./src/**/*.d.ts",
     "js": "tsc",
     "pretest": "npm-run-all --parallel js lint",

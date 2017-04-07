@@ -1,6 +1,11 @@
 ## master
 
 
+## 1.2.1 (April 7, 2017)
+
+* Remove typings.
+* Add users data for seed and tests.
+
 ## 1.2.0 (April 5, 2017)
 
 * Remove gulp.
