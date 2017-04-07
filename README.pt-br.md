@@ -9,11 +9,15 @@
 [pt-br](https://github.com/polutz/ptz-user-domain/blob/master/README.pt-br.md)
 [en-us](https://github.com/polutz/ptz-user-domain/blob/master/README.md)
 
+Este é o coração dos Usuários no Polutz, conjunto de móludos baseados em DDD (Domain Driven Design) 
+e TDD (Test Driven Development).
+Sinta-se livre para usar em seus projetos, e contribuir!
 
-Everything you need to create and validate users anywhere: browser, server, console, ....
+Nessa camada de Domínio (Domain), a ideia é utilizar o minimo possível de dependências, 
+tentando ficar ao máximo com javascript puro.
+Vamos rodar esse código no Browser e Servidor!
 
-
-## How to use in your project
+## Como usar nos seus projetos
 
 ```
     npm install ptz-user-domain --save
@@ -24,7 +28,7 @@ Everything you need to create and validate users anywhere: browser, server, cons
     npm install -g ts-node babel-cli
 ```
 
-## Test
+## Testes
 ```
     npm test
 ```
