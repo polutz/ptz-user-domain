@@ -1,6 +1,6 @@
 {
   "name": "ptz-user-domain",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "Polutz User Domain.",
   "main": "dist/index.js",
   "typings": "src/index.ts",
@@ -23,11 +23,6 @@
     "url": "https://github.com/polutz/ptz-user-domain/issues"
   },
   "homepage": "https://github.com/polutz/ptz-user-domain#readme",
-  "babel": {
-    "presets": [
-      "es2015"
-    ]
-  },
   "dependencies": {    
     "ptz-core-domain": "^1.1.4"
   },

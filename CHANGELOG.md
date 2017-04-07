@@ -1,6 +1,10 @@
 ## master
 
 
+## 1.2.3 (April 7, 2017)
+
+* Add IUserAppArgs.
+
 ## 1.2.2 (April 7, 2017)
 
 * Add seed to IUserApp.
