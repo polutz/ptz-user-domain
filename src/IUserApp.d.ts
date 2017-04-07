@@ -1,4 +1,5 @@
 import { IUser, IUserArgs } from './IUser';
+import { IUserRepository } from './IUserRepository';
 
 export interface IUserApp {
     save(user: IUserArgs): Promise<IUser>;
@@ -9,4 +10,9 @@ export interface IUserApp {
     verifyAuthToken(token: string): Promise<IUser>;
     hashPassword(user: IUser): Promise<IUser>;
     seed();
+}
+
+export interface IUserAppArgs {
+    userRepository: IUserRepository;
+    log?: (...args) => void;
 }
