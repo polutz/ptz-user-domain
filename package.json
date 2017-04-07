@@ -30,23 +30,24 @@
     ]
   },
   "dependencies": {
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.12",
     "ptz-core-domain": "^1.1.4"
   },
   "devDependencies": {
-    "babel-core": "^6.24.0",
+    "babel-core": "^6.24.1",
     "babel-polyfill": "^6.23.0",
-    "babel-preset-es2015": "^6.24.0",
+    "babel-preset-es2015": "^6.24.1",
     "babel-register": "^6.24.0",
     "codecov": "^1.0.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.2.0",
     "mocha-lcov-reporter": "^1.3.0",
     "npm-run-all": "^4.0.2",
-    "nyc": "^10.1.2",
-    "ptz-assert": "^1.6.2",
+    "nyc": "^10.2.0",
+    "ptz-assert": "^1.6.3",
     "sinon": "^1.17.7",
     "tslint": "^4.5.1",
-    "typescript": "^2.2.1",
-    "typings": "^2.1.0"
+    "typescript": "^2.2.2"
   }
 }
