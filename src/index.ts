@@ -3,6 +3,7 @@ import { IUser, IUserArgs } from './IUser';
 import { IUserApp } from './IUserApp';
 import { IUserRepository } from './IUserRepository';
 import User from './User';
+import users from './users';
 
 export {
     errors,
@@ -10,5 +11,6 @@ export {
     IUser,
     IUserArgs,
     IUserApp,
-    IUserRepository
+    IUserRepository,
+    users
 }

@@ -1,4 +1,5 @@
 import errors from './errors';
 import User from './User';
-export { errors, User };
+import users from './users';
+export { errors, User, users };
 //# sourceMappingURL=index.js.map
