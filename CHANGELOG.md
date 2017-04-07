@@ -1,6 +1,10 @@
 ## master
 
 
+## ... (April 7, 2017)
+
+* Add seed to IUserApp.
+
 ## 1.2.1 (April 7, 2017)
 
 * Remove typings.

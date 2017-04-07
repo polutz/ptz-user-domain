@@ -8,4 +8,5 @@ export interface IUserApp {
     getAuthToken(userNameOrEmail: string, password: string): Promise<IUser>;
     verifyAuthToken(token: string): Promise<IUser>;
     hashPassword(user: IUser): Promise<IUser>;
+    seed();
 }
