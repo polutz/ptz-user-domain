@@ -25,7 +25,7 @@ const alanmarcell = new User({
 
 const allUsers = [admin, angeloocana, alanmarcell];
 
-export {
+export default {
     admin,
     angeloocana,
     alanmarcell,

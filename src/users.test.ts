@@ -1,8 +1,8 @@
 import { ok } from 'ptz-assert';
-import { allUsers } from './users';
+import { users } from './index';
 
 describe('users', () => {
     it('allUsers has more than 2 test users', () => {
-        ok(allUsers.length > 2);
+        ok(users.allUsers.length > 2);
     });
 });

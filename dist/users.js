@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.allUsers = exports.alanmarcell = exports.angeloocana = exports.admin = undefined;
 
 var _User = require('./User');
 
@@ -30,8 +29,10 @@ var alanmarcell = new _User2.default({
     password: 'admin'
 });
 var allUsers = [admin, angeloocana, alanmarcell];
-exports.admin = admin;
-exports.angeloocana = angeloocana;
-exports.alanmarcell = alanmarcell;
-exports.allUsers = allUsers;
+exports.default = {
+    admin: admin,
+    angeloocana: angeloocana,
+    alanmarcell: alanmarcell,
+    allUsers: allUsers
+};
 //# sourceMappingURL=users.js.map
