@@ -1,5 +1,10 @@
 ## master
 
+
+## 1.2.5 (April 7, 2017)
+
+* Add export default to users.
+
 ## 1.2.4 (April 7, 2017)
 
 * Remove babel-node, babel-polyfill, babel-core and ptz-babel-register.
