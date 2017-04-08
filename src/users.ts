@@ -2,32 +2,32 @@
 
 import User from './User';
 
-var admin = new User({
+const admin = new User({
     displayName: 'Admin',
     email: 'dev@polutz.com',
     userName: 'admin',
     password: 'admin'
 });
 
-var angeloocana = new User({
+const angeloocana = new User({
     displayName: 'Ângelo Ocanã',
     userName: 'angeloocana',
     email: 'angeloocana@gmail.com',
     password: 'admin'
 });
 
-var alanmarcell = new User({
+const alanmarcell = new User({
     displayName: 'Alan Marcell',
     userName: 'alanmarcell',
     email: 'alanmarcell@live.com',
     password: 'admin'
 });
 
-var allUsers = [admin, angeloocana, alanmarcell];
+const allUsers = [admin, angeloocana, alanmarcell];
 
 export {
     admin,
     angeloocana,
     alanmarcell,
     allUsers
-}
+};

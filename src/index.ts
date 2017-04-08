@@ -14,4 +14,4 @@ export {
     IUserAppArgs,
     IUserRepository,
     users
-}
+};

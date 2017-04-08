@@ -6,42 +6,42 @@ import User from './User';
 describe('User', () => {
     describe('UserName', () => {
         it('Add error when empty username', () => {
-            var user = new User({ userName: '', email: '', displayName: '' });
+            const user = new User({ userName: '', email: '', displayName: '' });
             contains(user.errors, 'ERROR_USER_USERNAME_REQUIRED');
         });
 
         it('Do not add error when valid username', () => {
-            var user = new User({ userName: 'angeloocana', email: '', displayName: '' });
+            const user = new User({ userName: 'angeloocana', email: '', displayName: '' });
 
             notContains(user.errors, 'ERROR_USER_USERNAME_REQUIRED');
         });
 
         it('Should be lowercase', () => {
-            var user = new User({ userName: 'AnGeLoOcAnA', email: '', displayName: '' });
+            const user = new User({ userName: 'AnGeLoOcAnA', email: '', displayName: '' });
             equal(user.userName, 'angeloocana');
         });
     });
 
     describe('Email', () => {
         it('Add error when empty email', () => {
-            var user = new User({ userName: '', email: '', displayName: '' });
+            const user = new User({ userName: '', email: '', displayName: '' });
             contains(user.errors, 'ERROR_USER_EMAIL_REQUIRED');
         });
 
         it('Add error when invalid email', () => {
-            var user = new User({ userName: '', email: 'angeloocanagmail.com', displayName: '' });
+            const user = new User({ userName: '', email: 'angeloocanagmail.com', displayName: '' });
             contains(user.errors, 'ERROR_USER_EMAIL_INVALID');
         });
 
         it('Do not add error when valid email', () => {
-            var user = new User({ userName: 'angeloocana', email: 'angeloocana@gmail.com', displayName: '' });
+            const user = new User({ userName: 'angeloocana', email: 'angeloocana@gmail.com', displayName: '' });
 
             notContains(user.errors, 'ERROR_USER_EMAIL_REQUIRED');
             notContains(user.errors, 'ERROR_USER_EMAIL_INVALID');
         });
 
         it('Should be lowercase', () => {
-            var user = new User({ userName: 'AnGeLoOcAnA', email: 'AnGeLoOcAnA@gMaIl.CoM', displayName: '' });
+            const user = new User({ userName: 'AnGeLoOcAnA', email: 'AnGeLoOcAnA@gMaIl.CoM', displayName: '' });
             equal(user.email, 'angeloocana@gmail.com');
         });
 
@@ -132,51 +132,51 @@ describe('User', () => {
 
     describe('otherUsersWithSameUserNameOrEmail', () => {
         it('should return false when otherUsers is empty', () => {
-            var user = new User({
+            const user = new User({
                 userName: 'allanegidio',
                 email: 'allan.egidio@outlook.com',
                 displayName: 'Allan Egidio'
             });
 
-            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([]);
+            const thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([]);
 
             notOk(thereIsOtherUsers);
             emptyArray(user.errors);
         });
 
         it('should return true and addError when userName already in use', () => {
-            var user = new User({
+            const user = new User({
                 userName: 'allanegidio',
                 email: 'allan.egidio@outlook.com',
                 displayName: 'Allan Egidio'
             });
 
-            var otherUser: IUserArgs = {
+            const otherUser: IUserArgs = {
                 userName: 'allanegidio',
                 email: 'angeloocana@gmail.com',
                 displayName: 'Angelo Ocana'
             };
 
-            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
+            const thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
 
             ok(thereIsOtherUsers);
             contains(user.errors, errors.ERROR_USER_USERNAME_IN_USE);
         });
 
         it('should return true and addError when email already in use', () => {
-            var user = new User({
+            const user = new User({
                 userName: 'allanegidio',
                 email: 'allan.egidio@outlook.com',
                 displayName: 'Allan Egidio'
             });
 
-            var otherUser: IUserArgs = {
+            const otherUser: IUserArgs = {
                 userName: 'angeloocana',
                 email: 'allan.egidio@outlook.com',
                 displayName: 'Allan Egidio'
             };
 
-            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
+            const thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
 
             ok(thereIsOtherUsers);
             contains(user.errors, errors.ERROR_USER_EMAIL_IN_USE);
@@ -185,7 +185,7 @@ describe('User', () => {
 
     describe('getUserAthenticationError(userNameOrEmail)', () => {
         it('should return User Object with authentication error', () => {
-            var userAuthenticationError = User.getUserAthenticationError('allanegidio');
+            const userAuthenticationError = User.getUserAthenticationError('allanegidio');
 
             contains(userAuthenticationError.errors, errors.ERROR_USER_INVALID_USERNAME_OR_PASSWORD);
         });
