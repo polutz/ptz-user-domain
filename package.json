@@ -1,6 +1,6 @@
 {
   "name": "ptz-user-domain",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "description": "Polutz User Domain.",
   "main": "dist/index.js",
   "typings": "src/index.ts",

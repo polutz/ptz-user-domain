@@ -21,7 +21,7 @@ Everything you need to create and validate users anywhere: browser, server, cons
 
 ## NPM Global packages
 ```
-    npm install -g ts-node babel-cli
+    npm install -g ts-node
 ```
 
 ## Test

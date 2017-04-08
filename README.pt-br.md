@@ -25,7 +25,7 @@ Vamos rodar esse código no Browser e Servidor!
 
 ## NPM Global packages
 ```
-    npm install -g ts-node babel-cli
+    npm install -g ts-node
 ```
 
 ## Testes
