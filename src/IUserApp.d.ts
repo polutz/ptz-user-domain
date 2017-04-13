@@ -4,33 +4,33 @@ import { IAppFuncArgs } from './IAppFuncArgs';
 import { IUser, IUserArgs } from './IUser';
 import { IUserRepository } from './IUserRepository';
 
-export interface ISaveArgs extends IAppFuncArgs {
+export interface IUserAppISaveArgs extends IAppFuncArgs {
     userArgs: IUserArgs;
 }
 
-export interface IFindArgs extends IAppFuncArgs {
+export interface IUserAppIFindArgs extends IAppFuncArgs {
     query: any;
     options: { limit: number };
 }
 
-export interface IAuthenticateUserArgs extends IAppFuncArgs {
+export interface IUserAppIAuthenticateUserArgs extends IAppFuncArgs {
     userNameOrEmail: string;
     password: string;
 }
 
-export type IGetAuthTokenArgs = IAuthenticateUserArgs;
+export type IUserAppIGetAuthTokenArgs = IUserAppIAuthenticateUserArgs;
 
-export interface IVerifyAuthTokenArgs extends IAppFuncArgs {
+export interface IUserAppIVerifyAuthTokenArgs extends IAppFuncArgs {
     token: string;
 }
 
 export interface IUserApp {
-    save(args: ISaveArgs): Promise<IUser>;
-    find(args: IFindArgs): Promise<IUser[]>;
+    save(args: IUserAppISaveArgs): Promise<IUser>;
+    find(args: IUserAppIFindArgs): Promise<IUser[]>;
 
-    authenticateUser(args: IAuthenticateUserArgs): Promise<IUser>;
-    getAuthToken(args: IGetAuthTokenArgs): Promise<IUser>;
-    verifyAuthToken(args: IVerifyAuthTokenArgs): Promise<IUser>;
+    authenticateUser(args: IUserAppIAuthenticateUserArgs): Promise<IUser>;
+    getAuthToken(args: IUserAppIGetAuthTokenArgs): Promise<IUser>;
+    verifyAuthToken(args: IUserAppIVerifyAuthTokenArgs): Promise<IUser>;
     hashPassword(user: IUser): Promise<IUser>;
     seed();
 }
