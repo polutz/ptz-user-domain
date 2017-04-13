@@ -5,10 +5,10 @@ import { IUser, IUserArgs, IUserForLog } from './IUser';
 import {
     IUserApp,
     IUserAppArgs,
-    IUserAppISaveArgs,
-    IUserAppIFindArgs,
     IUserAppIAuthenticateUserArgs,
+    IUserAppIFindArgs,
     IUserAppIGetAuthTokenArgs,
+    IUserAppISaveArgs,
     IUserAppIVerifyAuthTokenArgs
 } from './IUserApp';
 import { IUserRepository } from './IUserRepository';
