@@ -1,6 +1,15 @@
 ## master
 
 
+## 1.3.1 (April 13, 2017)
+
+* Exports:
+    - IUserAppISaveArgs,
+    - IUserAppIFindArgs,
+    - IUserAppIAuthenticateUserArgs,
+    - IUserAppIGetAuthTokenArgs,
+    - IUserAppIVerifyAuthTokenArgs,
+
 ## 1.3.0 (April 13, 2017)
 
 * Add IUserForLog.
