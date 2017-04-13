@@ -1,6 +1,13 @@
 ## master
 
 
+## 1.3.0 (April 13, 2017)
+
+* Add IUserForLog.
+* Add ICreatedBy.
+* Add EntityBase and IEntityBase.
+* Add IAppFuncArgs.
+
 ## 1.2.5 (April 7, 2017)
 
 * Add export default to users.
