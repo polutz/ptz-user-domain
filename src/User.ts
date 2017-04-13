@@ -1,4 +1,5 @@
-import { EntityBase, validateEmail } from 'ptz-core-domain';
+import { validateEmail } from 'ptz-core-domain';
+import EntityBase from './EntityBase';
 import errors from './errors';
 import { IUser, IUserArgs } from './IUser';
 

@@ -58,10 +58,7 @@ describe('User', function () {
                 passwordHash: 'OldHash',
                 createdBy: {
                     dtCreated: new Date('1992-06-28'),
-                    ip: '192.168.0.1',
-                    userName: 'AngeloOcana',
-                    name: 'Angelo Ocana',
-                    userId: 'Old_Id'
+                    ip: '192.168.0.1'
                 }
             });
             newUser = new _User2.default({
@@ -74,9 +71,12 @@ describe('User', function () {
                 createdBy: {
                     dtCreated: new Date('1992-01-07'),
                     ip: '192.168.0.1',
-                    userName: 'AlanMarcell',
-                    name: 'Alan Marcell',
-                    userId: 'New_Id'
+                    user: {
+                        userName: 'AlanMarcell',
+                        displayName: 'Alan Marcell',
+                        email: 'alanmarcell@live.com',
+                        id: 'New_Id'
+                    }
                 }
             });
             updatedUser = dbUser.update(newUser);

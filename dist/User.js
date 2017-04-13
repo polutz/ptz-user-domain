@@ -10,6 +10,10 @@ var _get = function get(object, property, receiver) { if (object === null) objec
 
 var _ptzCoreDomain = require('ptz-core-domain');
 
+var _EntityBase2 = require('./EntityBase');
+
+var _EntityBase3 = _interopRequireDefault(_EntityBase2);
+
 var _errors = require('./errors');
 
 var _errors2 = _interopRequireDefault(_errors);
@@ -105,7 +109,7 @@ var User = function (_EntityBase) {
     }]);
 
     return User;
-}(_ptzCoreDomain.EntityBase);
+}(_EntityBase3.default);
 
 exports.default = User;
 

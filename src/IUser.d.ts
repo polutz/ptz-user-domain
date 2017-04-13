@@ -1,4 +1,4 @@
-import { IEntityBase, IEntityBaseArgs } from 'ptz-core-domain';
+import { IEntityBase, IEntityBaseArgs } from './IEntityBase';
 
 export interface IUser extends IEntityBase {
     userName: string;
@@ -22,4 +22,11 @@ export interface IUserArgs extends IEntityBaseArgs {
     imgUrl?: string;
     password?: string;
     passwordHash?: string;
+}
+
+export interface IUserForLog {
+    id: string;
+    userName: string;
+    email: string;
+    displayName: string;
 }
