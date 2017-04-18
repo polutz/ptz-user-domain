@@ -14,13 +14,28 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 describe('User', function () {
     describe('UserName', function () {
+        it('Add error when null username', function () {
+            var user = new _User2.default({ userName: null, email: '', displayName: '' });
+            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_REQUIRED);
+        });
         it('Add error when empty username', function () {
             var user = new _User2.default({ userName: '', email: '', displayName: '' });
-            (0, _ptzAssert.contains)(user.errors, 'ERROR_USER_USERNAME_REQUIRED');
+            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_REQUIRED);
         });
         it('Do not add error when valid username', function () {
             var user = new _User2.default({ userName: 'angeloocana', email: '', displayName: '' });
-            (0, _ptzAssert.notContains)(user.errors, 'ERROR_USER_USERNAME_REQUIRED');
+            (0, _ptzAssert.notContains)(user.errors, _errors2.default.ERROR_USER_USERNAME_REQUIRED);
+        });
+        it('Add error when minlength userName', function () {
+            var user = new _User2.default({ userName: 'a', email: '', displayName: '' });
+            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_MINLENGTH);
+        });
+        it('Add error when maxlength userName', function () {
+            var user = new _User2.default({
+                userName: 'labalblhblhbohblabcascjbascijbascjbasclasbclasbash',
+                email: '', displayName: ''
+            });
+            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_MAXLENGTH);
         });
         it('Should be lowercase', function () {
             var user = new _User2.default({ userName: 'AnGeLoOcAnA', email: '', displayName: '' });
@@ -30,16 +45,16 @@ describe('User', function () {
     describe('Email', function () {
         it('Add error when empty email', function () {
             var user = new _User2.default({ userName: '', email: '', displayName: '' });
-            (0, _ptzAssert.contains)(user.errors, 'ERROR_USER_EMAIL_REQUIRED');
+            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_EMAIL_REQUIRED);
         });
         it('Add error when invalid email', function () {
             var user = new _User2.default({ userName: '', email: 'angeloocanagmail.com', displayName: '' });
-            (0, _ptzAssert.contains)(user.errors, 'ERROR_USER_EMAIL_INVALID');
+            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_EMAIL_INVALID);
         });
         it('Do not add error when valid email', function () {
             var user = new _User2.default({ userName: 'angeloocana', email: 'angeloocana@gmail.com', displayName: '' });
-            (0, _ptzAssert.notContains)(user.errors, 'ERROR_USER_EMAIL_REQUIRED');
-            (0, _ptzAssert.notContains)(user.errors, 'ERROR_USER_EMAIL_INVALID');
+            (0, _ptzAssert.notContains)(user.errors, _errors2.default.ERROR_USER_EMAIL_REQUIRED);
+            (0, _ptzAssert.notContains)(user.errors, _errors2.default.ERROR_USER_EMAIL_INVALID);
         });
         it('Should be lowercase', function () {
             var user = new _User2.default({ userName: 'AnGeLoOcAnA', email: 'AnGeLoOcAnA@gMaIl.CoM', displayName: '' });

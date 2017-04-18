@@ -1,27 +1,39 @@
-import { validateEmail } from 'ptz-core-domain';
+import { IValidate, validate, validateEmail as isValidEmail } from 'ptz-core-domain';
 import EntityBase from './EntityBase';
-import errors from './errors';
+import allErrors from './errors';
 import { IUser, IUserArgs } from './IUser';
 
 export default class User extends EntityBase implements IUser {
 
+    static userNameMinLength = 3;
+    static userNameMaxLength = 30;
+
+    static passwordMinLength = 6;
+    static passwordMaxLength = 30;
+
     static userNameErrors = [
-        errors.ERROR_USER_USERNAME_IN_USE,
-        errors.ERROR_USER_USERNAME_REQUIRED];
+        allErrors.ERROR_USER_USERNAME_IN_USE,
+        allErrors.ERROR_USER_USERNAME_REQUIRED,
+        allErrors.ERROR_USER_USERNAME_MAXLENGTH,
+        allErrors.ERROR_USER_USERNAME_MINLENGTH];
 
     static emailErrors = [
-        errors.ERROR_USER_EMAIL_IN_USE,
-        errors.ERROR_USER_EMAIL_INVALID,
-        errors.ERROR_USER_EMAIL_REQUIRED];
+        allErrors.ERROR_USER_EMAIL_IN_USE,
+        allErrors.ERROR_USER_EMAIL_INVALID,
+        allErrors.ERROR_USER_EMAIL_REQUIRED];
 
     static displayNameErrors = [];
-    static passwordErrors = [];
+
+    static passwordErrors = [
+        allErrors.ERROR_USER_PASSWORD_MAXLENGTH,
+        allErrors.ERROR_USER_PASSWORD_MINLENGTH
+    ];
 
     static getUserAthenticationError(userNameOrEmail: string): IUser {
         return new User({
             displayName: '',
             email: '',
-            errors: [errors.ERROR_USER_INVALID_USERNAME_OR_PASSWORD],
+            errors: [allErrors.ERROR_USER_INVALID_USERNAME_OR_PASSWORD],
             userName: userNameOrEmail,
         });
     }
@@ -36,7 +48,7 @@ export default class User extends EntityBase implements IUser {
 
     constructor(user: IUserArgs) {
         if (!user)
-            throw errors.ERROR_EMPTY_USER;
+            throw allErrors.ERROR_EMPTY_USER;
 
         super(user);
 
@@ -52,8 +64,9 @@ export default class User extends EntityBase implements IUser {
     }
 
     isValid(): boolean {
-        this.validateUserName();
-        this.validateEmail();
+        this._validateUserName();
+        this._validateEmail();
+        this._validatePassword();
 
         return super.isValid();
     }
@@ -65,12 +78,12 @@ export default class User extends EntityBase implements IUser {
         var error = false;
 
         if (otherUsers.filter(user => user.userName === this.userName).length > 0) {
-            this.addError(errors.ERROR_USER_USERNAME_IN_USE);
+            this.addError(allErrors.ERROR_USER_USERNAME_IN_USE);
             error = true;
         }
 
         if (otherUsers.filter(user => user.email === this.email).length > 0) {
-            this.addError(errors.ERROR_USER_EMAIL_IN_USE);
+            this.addError(allErrors.ERROR_USER_EMAIL_IN_USE);
             error = true;
         }
 
@@ -87,19 +100,73 @@ export default class User extends EntityBase implements IUser {
         return this;
     }
 
-    private validateUserName() {
-        if (!this.userName || this.userName.length < 3)
-            this.addError(errors.ERROR_USER_USERNAME_REQUIRED);
-        else
-            this.userName = this.userName.toLowerCase();
+    private _validateUserName() {
+        const validation = validateUserName(this.userName);
+        this.addErrors(validation.errors);
+        this.userName = validation.data;
     }
 
-    private validateEmail() {
-        if (!this.email)
-            this.addError(errors.ERROR_USER_EMAIL_REQUIRED);
-        else if (!validateEmail(this.email))
-            this.addError(errors.ERROR_USER_EMAIL_INVALID);
-        else
-            this.email = this.email.toLowerCase();
+    private _validateEmail() {
+        const validation = validateEmail(this.email);
+        this.addErrors(validation.errors);
+        this.email = validation.data;
     }
+
+    private _validatePassword() {
+        const validation = validatePassword(this.password);
+        this.addErrors(validation.errors);
+    }
+}
+
+export function validateEmail(email: string): IValidate<string> {
+    const errors = validate({
+        data: email,
+        requiredError: allErrors.ERROR_USER_EMAIL_REQUIRED
+    });
+
+    if (email != null) {
+        email = email.toLowerCase();
+
+        if (!isValidEmail(email))
+            errors.push(allErrors.ERROR_USER_EMAIL_INVALID);
+    }
+
+    return {
+        data: email,
+        errors
+    };
+}
+
+export function validateUserName(userName: string): IValidate<string> {
+    const errors = validate({
+        data: userName,
+        requiredError: allErrors.ERROR_USER_USERNAME_REQUIRED,
+        maxLength: User.userNameMaxLength,
+        maxLengthError: allErrors.ERROR_USER_USERNAME_MAXLENGTH,
+        minLength: User.userNameMinLength,
+        minLengthError: allErrors.ERROR_USER_USERNAME_MINLENGTH
+    });
+
+    if (userName != null)
+        userName = userName.toLowerCase();
+
+    return {
+        data: userName,
+        errors
+    };
+}
+
+export function validatePassword(password: string): IValidate<string> {
+    const errors = validate({
+        data: password,
+        maxLength: User.passwordMaxLength,
+        maxLengthError: allErrors.ERROR_USER_PASSWORD_MAXLENGTH,
+        minLength: User.passwordMinLength,
+        minLengthError: allErrors.ERROR_USER_PASSWORD_MINLENGTH
+    });
+
+    return {
+        data: password,
+        errors
+    };
 }

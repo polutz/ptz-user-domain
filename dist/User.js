@@ -8,6 +8,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 
 var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
 
+exports.validateEmail = validateEmail;
+exports.validateUserName = validateUserName;
+exports.validatePassword = validatePassword;
+
 var _ptzCoreDomain = require('ptz-core-domain');
 
 var _EntityBase2 = require('./EntityBase');
@@ -50,8 +54,9 @@ var User = function (_EntityBase) {
     _createClass(User, [{
         key: 'isValid',
         value: function isValid() {
-            this.validateUserName();
-            this.validateEmail();
+            this._validateUserName();
+            this._validateEmail();
+            this._validatePassword();
             return _get(User.prototype.__proto__ || Object.getPrototypeOf(User.prototype), 'isValid', this).call(this);
         }
     }, {
@@ -87,14 +92,24 @@ var User = function (_EntityBase) {
             return this;
         }
     }, {
-        key: 'validateUserName',
-        value: function validateUserName() {
-            if (!this.userName || this.userName.length < 3) this.addError(_errors2.default.ERROR_USER_USERNAME_REQUIRED);else this.userName = this.userName.toLowerCase();
+        key: '_validateUserName',
+        value: function _validateUserName() {
+            var validation = validateUserName(this.userName);
+            this.addErrors(validation.errors);
+            this.userName = validation.data;
         }
     }, {
-        key: 'validateEmail',
-        value: function validateEmail() {
-            if (!this.email) this.addError(_errors2.default.ERROR_USER_EMAIL_REQUIRED);else if (!(0, _ptzCoreDomain.validateEmail)(this.email)) this.addError(_errors2.default.ERROR_USER_EMAIL_INVALID);else this.email = this.email.toLowerCase();
+        key: '_validateEmail',
+        value: function _validateEmail() {
+            var validation = validateEmail(this.email);
+            this.addErrors(validation.errors);
+            this.email = validation.data;
+        }
+    }, {
+        key: '_validatePassword',
+        value: function _validatePassword() {
+            var validation = validatePassword(this.password);
+            this.addErrors(validation.errors);
         }
     }], [{
         key: 'getUserAthenticationError',
@@ -113,8 +128,54 @@ var User = function (_EntityBase) {
 
 exports.default = User;
 
-User.userNameErrors = [_errors2.default.ERROR_USER_USERNAME_IN_USE, _errors2.default.ERROR_USER_USERNAME_REQUIRED];
+User.userNameMinLength = 3;
+User.userNameMaxLength = 30;
+User.passwordMinLength = 6;
+User.passwordMaxLength = 30;
+User.userNameErrors = [_errors2.default.ERROR_USER_USERNAME_IN_USE, _errors2.default.ERROR_USER_USERNAME_REQUIRED, _errors2.default.ERROR_USER_USERNAME_MAXLENGTH, _errors2.default.ERROR_USER_USERNAME_MINLENGTH];
 User.emailErrors = [_errors2.default.ERROR_USER_EMAIL_IN_USE, _errors2.default.ERROR_USER_EMAIL_INVALID, _errors2.default.ERROR_USER_EMAIL_REQUIRED];
 User.displayNameErrors = [];
-User.passwordErrors = [];
+User.passwordErrors = [_errors2.default.ERROR_USER_PASSWORD_MAXLENGTH, _errors2.default.ERROR_USER_PASSWORD_MINLENGTH];
+function validateEmail(email) {
+    var errors = (0, _ptzCoreDomain.validate)({
+        data: email,
+        requiredError: _errors2.default.ERROR_USER_EMAIL_REQUIRED
+    });
+    if (email != null) {
+        email = email.toLowerCase();
+        if (!(0, _ptzCoreDomain.validateEmail)(email)) errors.push(_errors2.default.ERROR_USER_EMAIL_INVALID);
+    }
+    return {
+        data: email,
+        errors: errors
+    };
+}
+function validateUserName(userName) {
+    var errors = (0, _ptzCoreDomain.validate)({
+        data: userName,
+        requiredError: _errors2.default.ERROR_USER_USERNAME_REQUIRED,
+        maxLength: User.userNameMaxLength,
+        maxLengthError: _errors2.default.ERROR_USER_USERNAME_MAXLENGTH,
+        minLength: User.userNameMinLength,
+        minLengthError: _errors2.default.ERROR_USER_USERNAME_MINLENGTH
+    });
+    if (userName != null) userName = userName.toLowerCase();
+    return {
+        data: userName,
+        errors: errors
+    };
+}
+function validatePassword(password) {
+    var errors = (0, _ptzCoreDomain.validate)({
+        data: password,
+        maxLength: User.passwordMaxLength,
+        maxLengthError: _errors2.default.ERROR_USER_PASSWORD_MAXLENGTH,
+        minLength: User.passwordMinLength,
+        minLengthError: _errors2.default.ERROR_USER_PASSWORD_MINLENGTH
+    });
+    return {
+        data: password,
+        errors: errors
+    };
+}
 //# sourceMappingURL=User.js.map
