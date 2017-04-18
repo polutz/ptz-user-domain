@@ -1,6 +1,12 @@
 ## master
 
 
+## 1.4.0 (April 13, 2017)
+
+* Add AuthenticateUserForm.
+* Update User to use validate from ptz-core-domain.
+* User validate password min and max length.
+
 ## 1.3.1 (April 13, 2017)
 
 * Exports:
