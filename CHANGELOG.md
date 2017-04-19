@@ -1,7 +1,11 @@
 ## master
 
 
-## 1.4.0 (April 13, 2017)
+## 1.4.1 (April 19, 2017)
+
+* Export AuthenticateUserForm.
+
+## 1.4.0 (April 18, 2017)
 
 * Add AuthenticateUserForm.
 * Update User to use validate from ptz-core-domain.
