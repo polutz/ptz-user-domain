@@ -1,7 +1,7 @@
 import { ICreatedBy } from 'ptz-core-domain';
 import { Ilog } from 'ptz-log';
 import { IAppFuncArgs } from './IAppFuncArgs';
-import { IAuthenticateUserForm } from './IAuthenticateUserForm';
+import { IAuthenticateUserFormArgs } from './IAuthenticateUserForm';
 import { IUser, IUserArgs } from './IUser';
 import { IUserRepository } from './IUserRepository';
 
@@ -15,7 +15,7 @@ export interface IUserAppIFindArgs extends IAppFuncArgs {
 }
 
 export interface IUserAppIAuthenticateUserArgs extends IAppFuncArgs {
-    form: IAuthenticateUserForm;
+    form: IAuthenticateUserFormArgs;
 }
 
 export type IUserAppIGetAuthTokenArgs = IUserAppIAuthenticateUserArgs;

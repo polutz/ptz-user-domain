@@ -1,8 +1,7 @@
 import { contains, deepEqual, emptyArray, equal, notContains, notEqual, notOk, ok } from 'ptz-assert';
 import log from 'ptz-log';
-import AuthenticateUserForm from './AuthenticateUserForm';
 import errors from './errors';
-import { IAuthenticateUserForm, IAuthenticateUserFormArgs } from './IAuthenticateUserForm';
+import { AuthenticateUserForm, IAuthenticateUserForm, IAuthenticateUserFormArgs } from './index';
 
 describe('AuthenticateUserForm', () => {
     describe('userNameOrEmail', () => {

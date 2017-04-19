@@ -3,7 +3,11 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.users = exports.User = exports.errors = undefined;
+exports.users = exports.AuthenticateUserForm = exports.User = exports.errors = undefined;
+
+var _AuthenticateUserForm = require('./AuthenticateUserForm');
+
+var _AuthenticateUserForm2 = _interopRequireDefault(_AuthenticateUserForm);
 
 var _errors = require('./errors');
 
@@ -21,5 +25,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.errors = _errors2.default;
 exports.User = _User2.default;
+exports.AuthenticateUserForm = _AuthenticateUserForm2.default;
 exports.users = _users2.default;
 //# sourceMappingURL=index.js.map
