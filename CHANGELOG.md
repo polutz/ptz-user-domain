@@ -1,6 +1,11 @@
 ## master
 
 
+## 1.5.2 (April 19, 2017)
+
+* Change users seed data password to testtest.
+    - This fix password min length error.
+
 ## 1.5.1 (April 19, 2017)
 
 * Remove User.getUserAthenticationError.
