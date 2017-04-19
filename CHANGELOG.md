@@ -1,6 +1,14 @@
 ## master
 
 
+## 1.5.1 (April 19, 2017)
+
+* Remove User.getUserAthenticationError.
+* Change error key:
+	- from ERROR_USER_INVALID_USERNAME_OR_PASSWORD
+	- to ERROR_USERAPP_GETAUTHTOKEN_INVALID_USERNAME_OR_PASSWORD
+* Add prop errors to IAuthToken.
+
 ## 1.5.0 (April 19, 2017)
 
 * Change IUserApp.getAuthToken return from IUser to IAuthToken.
