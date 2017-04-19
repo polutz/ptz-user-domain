@@ -5,6 +5,7 @@ import { IAuthenticateUserForm, IAuthenticateUserFormArgs } from './IAuthenticat
 import { ICreatedBy } from './ICreatedBy';
 import { IUser, IUserArgs, IUserForLog } from './IUser';
 import {
+    IAuthToken,
     IUserApp,
     IUserAppArgs,
     IUserAppIAuthenticateUserArgs,
@@ -22,6 +23,7 @@ export {
     User,
     AuthenticateUserForm, IAuthenticateUserForm, IAuthenticateUserFormArgs,
     IAppFuncArgs,
+    IAuthToken,
     ICreatedBy,
     IUser,
     IUserArgs,

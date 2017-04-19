@@ -24,12 +24,17 @@ export interface IUserAppIVerifyAuthTokenArgs extends IAppFuncArgs {
     token: string;
 }
 
+export interface IAuthToken {
+    user: IUser;
+    authToken?: string;
+}
+
 export interface IUserApp {
     save(args: IUserAppISaveArgs): Promise<IUser>;
     find(args: IUserAppIFindArgs): Promise<IUser[]>;
 
     authenticateUser(args: IUserAppIAuthenticateUserArgs): Promise<IUser>;
-    getAuthToken(args: IUserAppIGetAuthTokenArgs): Promise<IUser>;
+    getAuthToken(args: IUserAppIGetAuthTokenArgs): Promise<IAuthToken>;
     verifyAuthToken(args: IUserAppIVerifyAuthTokenArgs): Promise<IUser>;
     hashPassword(user: IUser): Promise<IUser>;
     seed();
