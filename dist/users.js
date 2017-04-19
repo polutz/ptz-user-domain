@@ -14,19 +14,19 @@ var admin = new _User2.default({
     displayName: 'Admin',
     email: 'dev@polutz.com',
     userName: 'admin',
-    password: 'admin'
+    password: 'testtest'
 });
 var angeloocana = new _User2.default({
     displayName: 'Ângelo Ocanã',
     userName: 'angeloocana',
     email: 'angeloocana@gmail.com',
-    password: 'admin'
+    password: 'testtest'
 });
 var alanmarcell = new _User2.default({
     displayName: 'Alan Marcell',
     userName: 'alanmarcell',
     email: 'alanmarcell@live.com',
-    password: 'admin'
+    password: 'testtest'
 });
 var allUsers = [admin, angeloocana, alanmarcell];
 exports.default = {
