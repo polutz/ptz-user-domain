@@ -111,16 +111,6 @@ var User = function (_EntityBase) {
             var validation = validatePassword(this.password);
             this.addErrors(validation.errors);
         }
-    }], [{
-        key: 'getUserAthenticationError',
-        value: function getUserAthenticationError(userNameOrEmail) {
-            return new User({
-                displayName: '',
-                email: '',
-                errors: [_errors2.default.ERROR_USER_INVALID_USERNAME_OR_PASSWORD],
-                userName: userNameOrEmail
-            });
-        }
     }]);
 
     return User;

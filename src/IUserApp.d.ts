@@ -27,6 +27,7 @@ export interface IUserAppIVerifyAuthTokenArgs extends IAppFuncArgs {
 export interface IAuthToken {
     user: IUser;
     authToken?: string;
+    errors: string[];
 }
 
 export interface IUserApp {

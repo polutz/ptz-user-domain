@@ -29,15 +29,6 @@ export default class User extends EntityBase implements IUser {
         allErrors.ERROR_USER_PASSWORD_MINLENGTH
     ];
 
-    static getUserAthenticationError(userNameOrEmail: string): IUser {
-        return new User({
-            displayName: '',
-            email: '',
-            errors: [allErrors.ERROR_USER_INVALID_USERNAME_OR_PASSWORD],
-            userName: userNameOrEmail,
-        });
-    }
-
     userName: string;
     email: string;
     emailConfirmed?: boolean;

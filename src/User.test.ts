@@ -200,12 +200,4 @@ describe('User', () => {
             contains(user.errors, errors.ERROR_USER_EMAIL_IN_USE);
         });
     });
-
-    describe('getUserAthenticationError(userNameOrEmail)', () => {
-        it('should return User Object with authentication error', () => {
-            const userAuthenticationError = User.getUserAthenticationError('allanegidio');
-
-            contains(userAuthenticationError.errors, errors.ERROR_USER_INVALID_USERNAME_OR_PASSWORD);
-        });
-    });
 });

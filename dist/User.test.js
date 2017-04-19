@@ -172,11 +172,5 @@ describe('User', function () {
             (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_EMAIL_IN_USE);
         });
     });
-    describe('getUserAthenticationError(userNameOrEmail)', function () {
-        it('should return User Object with authentication error', function () {
-            var userAuthenticationError = _User2.default.getUserAthenticationError('allanegidio');
-            (0, _ptzAssert.contains)(userAuthenticationError.errors, _errors2.default.ERROR_USER_INVALID_USERNAME_OR_PASSWORD);
-        });
-    });
 });
 //# sourceMappingURL=User.test.js.map
