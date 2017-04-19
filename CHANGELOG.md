@@ -1,6 +1,10 @@
 ## master
 
 
+## 1.5.0 (April 19, 2017)
+
+* Change IUserApp.getAuthToken return from IUser to IAuthToken.
+
 ## 1.4.1 (April 19, 2017)
 
 * Export AuthenticateUserForm.
