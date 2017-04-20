@@ -8,4 +8,5 @@ export interface IAuthenticateUserForm extends IHaveValidation {
 export interface IAuthenticateUserFormArgs {
     userNameOrEmail: string;
     password: string;
+    errors?: string[];
 }
