@@ -1,6 +1,11 @@
 ## master
 
 
+## 1.5.3 (April 19, 2017)
+
+* Change User isValid() to validate()
+    - When you call user.isValid(), it is validating the user again instead of only validation in user constructor.
+
 ## 1.5.2 (April 19, 2017)
 
 * Change users seed data password to testtest.
