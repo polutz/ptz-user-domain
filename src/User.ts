@@ -51,15 +51,13 @@ export default class User extends EntityBase implements IUser {
         this.password = user.password;
         this.passwordHash = user.passwordHash;
 
-        this.isValid();
+        this.validate();
     }
 
-    isValid(): boolean {
+    validate(): void {
         this._validateUserName();
         this._validateEmail();
         this._validatePassword();
-
-        return super.isValid();
     }
 
     otherUsersWithSameUserNameOrEmail(otherUsers: IUserArgs[]): boolean {

@@ -6,8 +6,6 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _get = function get(object, property, receiver) { if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { return get(parent, property, receiver); } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } };
-
 exports.validateEmail = validateEmail;
 exports.validateUserName = validateUserName;
 exports.validatePassword = validatePassword;
@@ -47,17 +45,16 @@ var User = function (_EntityBase) {
         _this.imgUrl = user.imgUrl;
         _this.password = user.password;
         _this.passwordHash = user.passwordHash;
-        _this.isValid();
+        _this.validate();
         return _this;
     }
 
     _createClass(User, [{
-        key: 'isValid',
-        value: function isValid() {
+        key: 'validate',
+        value: function validate() {
             this._validateUserName();
             this._validateEmail();
             this._validatePassword();
-            return _get(User.prototype.__proto__ || Object.getPrototypeOf(User.prototype), 'isValid', this).call(this);
         }
     }, {
         key: 'otherUsersWithSameUserNameOrEmail',
