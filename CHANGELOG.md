@@ -1,6 +1,10 @@
 ## master
 
 
+## 1.6.0 (April 24, 2017)
+
+* Using ptz-validations.
+
 ## 1.5.3 (April 19, 2017)
 
 * Change User isValid() to validate()
