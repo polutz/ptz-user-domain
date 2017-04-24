@@ -2,30 +2,32 @@
 
 import User from './User';
 
-const admin = new User({
+export const admin = new User({
     displayName: 'Admin',
     email: 'dev@polutz.com',
     userName: 'admin',
     password: 'testtest'
 });
 
-const angeloocana = new User({
+export const angeloocana = new User({
     displayName: 'Ângelo Ocanã',
     userName: 'angeloocana',
     email: 'angeloocana@gmail.com',
     password: 'testtest'
 });
 
-const alanmarcell = new User({
+export const alanmarcell = new User({
     displayName: 'Alan Marcell',
     userName: 'alanmarcell',
     email: 'alanmarcell@live.com',
     password: 'testtest'
 });
 
-const allUsers = [admin, angeloocana, alanmarcell];
+export const allUsers = [admin, angeloocana, alanmarcell];
 
-export default {
+export default allUsers;
+
+export const users = {
     admin,
     angeloocana,
     alanmarcell,

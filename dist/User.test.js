@@ -2,9 +2,11 @@
 
 var _ptzAssert = require('ptz-assert');
 
-var _errors = require('./errors');
+var _ptzValidations = require('ptz-validations');
 
-var _errors2 = _interopRequireDefault(_errors);
+var _allErrors = require('./allErrors');
+
+var _allErrors2 = _interopRequireDefault(_allErrors);
 
 var _User = require('./User');
 
@@ -16,26 +18,36 @@ describe('User', function () {
     describe('UserName', function () {
         it('Add error when null username', function () {
             var user = new _User2.default({ userName: null, email: '', displayName: '' });
-            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_REQUIRED);
+            (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                return e.propName === 'userName' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
+            });
         });
         it('Add error when empty username', function () {
             var user = new _User2.default({ userName: '', email: '', displayName: '' });
-            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_REQUIRED);
+            (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                return e.propName === 'userName' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
+            });
         });
         it('Do not add error when valid username', function () {
             var user = new _User2.default({ userName: 'angeloocana', email: '', displayName: '' });
-            (0, _ptzAssert.notContains)(user.errors, _errors2.default.ERROR_USER_USERNAME_REQUIRED);
+            (0, _ptzAssert.notContainsFind)(user.errors, function (e) {
+                return e.propName === 'userName' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
+            });
         });
         it('Add error when minlength userName', function () {
             var user = new _User2.default({ userName: 'a', email: '', displayName: '' });
-            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_MINLENGTH);
+            (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                return e.propName === 'userName' && e.errorMsg === _ptzValidations.allErrors.MIN_LENGTH;
+            });
         });
         it('Add error when maxlength userName', function () {
             var user = new _User2.default({
                 userName: 'labalblhblhbohblabcascjbascijbascjbasclasbclasbash',
                 email: '', displayName: ''
             });
-            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_MAXLENGTH);
+            (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                return e.propName === 'userName' && e.errorMsg === _ptzValidations.allErrors.MAX_LENGTH;
+            });
         });
         it('Should be lowercase', function () {
             var user = new _User2.default({ userName: 'AnGeLoOcAnA', email: '', displayName: '' });
@@ -45,16 +57,24 @@ describe('User', function () {
     describe('Email', function () {
         it('Add error when empty email', function () {
             var user = new _User2.default({ userName: '', email: '', displayName: '' });
-            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_EMAIL_REQUIRED);
+            (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                return e.propName === 'email' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
+            });
         });
         it('Add error when invalid email', function () {
             var user = new _User2.default({ userName: '', email: 'angeloocanagmail.com', displayName: '' });
-            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_EMAIL_INVALID);
+            (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                return e.propName === 'email' && e.errorMsg === _ptzValidations.allErrors.INVALID_EMAIL;
+            });
         });
         it('Do not add error when valid email', function () {
             var user = new _User2.default({ userName: 'angeloocana', email: 'angeloocana@gmail.com', displayName: '' });
-            (0, _ptzAssert.notContains)(user.errors, _errors2.default.ERROR_USER_EMAIL_REQUIRED);
-            (0, _ptzAssert.notContains)(user.errors, _errors2.default.ERROR_USER_EMAIL_INVALID);
+            (0, _ptzAssert.notContainsFind)(user.errors, function (e) {
+                return e.propName === 'email' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
+            });
+            (0, _ptzAssert.notContainsFind)(user.errors, function (e) {
+                return e.propName === 'email' && e.errorMsg === _ptzValidations.allErrors.INVALID_EMAIL;
+            });
         });
         it('Should be lowercase', function () {
             var user = new _User2.default({ userName: 'AnGeLoOcAnA', email: 'AnGeLoOcAnA@gMaIl.CoM', displayName: '' });
@@ -139,6 +159,9 @@ describe('User', function () {
             });
             var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([]);
             (0, _ptzAssert.notOk)(thereIsOtherUsers);
+            console.log('******************************');
+            console.log(user);
+            console.log('******************************');
             (0, _ptzAssert.emptyArray)(user.errors);
         });
         it('should return true and addError when userName already in use', function () {
@@ -154,7 +177,9 @@ describe('User', function () {
             };
             var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
             (0, _ptzAssert.ok)(thereIsOtherUsers);
-            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_USERNAME_IN_USE);
+            (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                return e.propName === 'userName' && e.errorMsg === _allErrors2.default.ERROR_USER_USERNAME_IN_USE;
+            });
         });
         it('should return true and addError when email already in use', function () {
             var user = new _User2.default({
@@ -169,7 +194,9 @@ describe('User', function () {
             };
             var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
             (0, _ptzAssert.ok)(thereIsOtherUsers);
-            (0, _ptzAssert.contains)(user.errors, _errors2.default.ERROR_USER_EMAIL_IN_USE);
+            (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                return e.propName === 'email' && e.errorMsg === _allErrors2.default.ERROR_USER_EMAIL_IN_USE;
+            });
         });
     });
 });

@@ -3,6 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.users = exports.allUsers = exports.alanmarcell = exports.angeloocana = exports.admin = undefined;
 
 var _User = require('./User');
 
@@ -10,26 +11,27 @@ var _User2 = _interopRequireDefault(_User);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var admin = new _User2.default({
+var admin = exports.admin = new _User2.default({
     displayName: 'Admin',
     email: 'dev@polutz.com',
     userName: 'admin',
     password: 'testtest'
 });
-var angeloocana = new _User2.default({
+var angeloocana = exports.angeloocana = new _User2.default({
     displayName: 'Ângelo Ocanã',
     userName: 'angeloocana',
     email: 'angeloocana@gmail.com',
     password: 'testtest'
 });
-var alanmarcell = new _User2.default({
+var alanmarcell = exports.alanmarcell = new _User2.default({
     displayName: 'Alan Marcell',
     userName: 'alanmarcell',
     email: 'alanmarcell@live.com',
     password: 'testtest'
 });
-var allUsers = [admin, angeloocana, alanmarcell];
-exports.default = {
+var allUsers = exports.allUsers = [admin, angeloocana, alanmarcell];
+exports.default = allUsers;
+var users = exports.users = {
     admin: admin,
     angeloocana: angeloocana,
     alanmarcell: alanmarcell,

@@ -1,6 +1,11 @@
-import { contains, deepEqual, emptyArray, equal, notContains, notEqual, notOk, ok } from 'ptz-assert';
+import {
+    contains, containsFind, deepEqual, emptyArray, equal, notContains, notContainsFind,
+    notEqual, notOk, ok
+} from 'ptz-assert';
+
 import log from 'ptz-log';
-import errors from './errors';
+import { allErrors as allValidationErrors } from 'ptz-validations';
+import allErrors from './allErrors';
 import { IUser, IUserArgs } from './IUser';
 import User from './User';
 
@@ -8,22 +13,26 @@ describe('User', () => {
     describe('UserName', () => {
         it('Add error when null username', () => {
             const user = new User({ userName: null, email: '', displayName: '' });
-            contains(user.errors, errors.ERROR_USER_USERNAME_REQUIRED);
+            containsFind(user.errors, e => e.propName === 'userName'
+                && e.errorMsg === allValidationErrors.REQUIRED);
         });
 
         it('Add error when empty username', () => {
             const user = new User({ userName: '', email: '', displayName: '' });
-            contains(user.errors, errors.ERROR_USER_USERNAME_REQUIRED);
+            containsFind(user.errors, e => e.propName === 'userName'
+                && e.errorMsg === allValidationErrors.REQUIRED);
         });
 
         it('Do not add error when valid username', () => {
             const user = new User({ userName: 'angeloocana', email: '', displayName: '' });
-            notContains(user.errors, errors.ERROR_USER_USERNAME_REQUIRED);
+            notContainsFind(user.errors, e => e.propName === 'userName'
+                && e.errorMsg === allValidationErrors.REQUIRED);
         });
 
         it('Add error when minlength userName', () => {
             const user = new User({ userName: 'a', email: '', displayName: '' });
-            contains(user.errors, errors.ERROR_USER_USERNAME_MINLENGTH);
+            containsFind(user.errors, e => e.propName === 'userName'
+                && e.errorMsg === allValidationErrors.MIN_LENGTH);
         });
 
         it('Add error when maxlength userName', () => {
@@ -31,7 +40,8 @@ describe('User', () => {
                 userName: 'labalblhblhbohblabcascjbascijbascjbasclasbclasbash',
                 email: '', displayName: ''
             });
-            contains(user.errors, errors.ERROR_USER_USERNAME_MAXLENGTH);
+            containsFind(user.errors, e => e.propName === 'userName'
+                && e.errorMsg === allValidationErrors.MAX_LENGTH);
         });
 
         it('Should be lowercase', () => {
@@ -43,19 +53,24 @@ describe('User', () => {
     describe('Email', () => {
         it('Add error when empty email', () => {
             const user = new User({ userName: '', email: '', displayName: '' });
-            contains(user.errors, errors.ERROR_USER_EMAIL_REQUIRED);
+            containsFind(user.errors, e => e.propName === 'email'
+                && e.errorMsg === allValidationErrors.REQUIRED);
         });
 
         it('Add error when invalid email', () => {
             const user = new User({ userName: '', email: 'angeloocanagmail.com', displayName: '' });
-            contains(user.errors, errors.ERROR_USER_EMAIL_INVALID);
+            containsFind(user.errors, e => e.propName === 'email'
+                && e.errorMsg === allValidationErrors.INVALID_EMAIL);
         });
 
         it('Do not add error when valid email', () => {
             const user = new User({ userName: 'angeloocana', email: 'angeloocana@gmail.com', displayName: '' });
 
-            notContains(user.errors, errors.ERROR_USER_EMAIL_REQUIRED);
-            notContains(user.errors, errors.ERROR_USER_EMAIL_INVALID);
+            notContainsFind(user.errors, e => e.propName === 'email'
+                && e.errorMsg === allValidationErrors.REQUIRED);
+
+            notContainsFind(user.errors, e => e.propName === 'email'
+                && e.errorMsg === allValidationErrors.INVALID_EMAIL);
         });
 
         it('Should be lowercase', () => {
@@ -159,6 +174,9 @@ describe('User', () => {
             const thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([]);
 
             notOk(thereIsOtherUsers);
+            console.log('******************************');
+            console.log(user);
+            console.log('******************************');
             emptyArray(user.errors);
         });
 
@@ -178,7 +196,8 @@ describe('User', () => {
             const thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
 
             ok(thereIsOtherUsers);
-            contains(user.errors, errors.ERROR_USER_USERNAME_IN_USE);
+            containsFind(user.errors, e => e.propName === 'userName'
+                && e.errorMsg === allErrors.ERROR_USER_USERNAME_IN_USE);
         });
 
         it('should return true and addError when email already in use', () => {
@@ -197,7 +216,8 @@ describe('User', () => {
             const thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([otherUser]);
 
             ok(thereIsOtherUsers);
-            contains(user.errors, errors.ERROR_USER_EMAIL_IN_USE);
+            containsFind(user.errors, e => e.propName === 'email'
+                && e.errorMsg === allErrors.ERROR_USER_EMAIL_IN_USE);
         });
     });
 });

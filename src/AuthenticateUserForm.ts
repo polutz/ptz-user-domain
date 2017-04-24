@@ -1,17 +1,15 @@
-import { HaveValidation, validate } from 'ptz-core-domain';
-import errors from './errors';
+import { HaveValidation, IStringValidation, validateEmail, validateString } from 'ptz-validations';
+import allErrors from './allErrors';
 import { IAuthenticateUserForm, IAuthenticateUserFormArgs } from './IAuthenticateUserForm';
-import User, { validateEmail, validatePassword, validateUserName } from './User';
+import User from './User';
 
 export default class AuthenticateUserForm extends HaveValidation implements IAuthenticateUserForm {
-    static userNameOrEmailErrors = [
-        ...User.userNameErrors,
-        ...User.emailErrors
-    ];
 
-    static passwordErrors = [
-        errors.ERRORS_AUTHENTICATEUSERFORM_PASSWORD_REQUIRED,
-        ...User.passwordErrors];
+    static passwordValidation: IStringValidation = {
+        required: true,
+        minLength: User.passwordValidation.minLength,
+        maxLength: User.passwordValidation.maxLength
+    };
 
     userNameOrEmail: string;
     password: string;
@@ -19,35 +17,39 @@ export default class AuthenticateUserForm extends HaveValidation implements IAut
     constructor(args: IAuthenticateUserFormArgs) {
         super(args);
 
-        this.userNameOrEmail = args.userNameOrEmail;
-        this.password = args.password;
-
-        this.isValid();
+        this.setUserNameOrEmail(args.userNameOrEmail);
+        this.setPassword(args.password);
     }
 
-    isValid(): boolean {
-        this._validateUserNameOrEmail();
-        this._validatePassword();
+    private setUserNameOrEmail(userNameOrEmail: string) {
+        if (userNameOrEmail && userNameOrEmail.indexOf('@') >= 0)
+            this.addErrors(validateEmail({
+                data: userNameOrEmail,
+                propName: 'userNameOrEmail',
+                propValidation: User.emailValidation
+            }));
+        else
+            this.addErrors(validateString({
+                data: userNameOrEmail,
+                propName: 'userNameOrEmail',
+                propValidation: User.userNameValidation
+            }));
 
-        return super.isValid();
+        if (userNameOrEmail != null)
+            this.userNameOrEmail = userNameOrEmail.toLowerCase();
     }
 
-    private _validateUserNameOrEmail() {
-        const validation = (this.userNameOrEmail && this.userNameOrEmail.indexOf('@') >= 0)
-            ? validateEmail(this.userNameOrEmail)
-            : validateUserName(this.userNameOrEmail);
-
-        this.addErrors(validation.errors);
-        this.userNameOrEmail = validation.data;
-    }
-
-    private _validatePassword() {
-        this.addErrors(validate({
-            data: this.password,
-            requiredError: errors.ERRORS_AUTHENTICATEUSERFORM_PASSWORD_REQUIRED
+    private setPassword(password: string) {
+        this.addErrors(validateString({
+            data: password,
+            propName: 'password',
+            propValidation: AuthenticateUserForm.passwordValidation
         }));
 
-        const validation = validatePassword(this.password);
-        this.addErrors(validation.errors);
+        this.password = password;
     }
 }
+
+export {
+    AuthenticateUserForm
+};

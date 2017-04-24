@@ -3,22 +3,19 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.User = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-exports.validateEmail = validateEmail;
-exports.validateUserName = validateUserName;
-exports.validatePassword = validatePassword;
+var _ptzValidations = require('ptz-validations');
 
-var _ptzCoreDomain = require('ptz-core-domain');
+var _allErrors = require('./allErrors');
+
+var _allErrors2 = _interopRequireDefault(_allErrors);
 
 var _EntityBase2 = require('./EntityBase');
 
 var _EntityBase3 = _interopRequireDefault(_EntityBase2);
-
-var _errors = require('./errors');
-
-var _errors2 = _interopRequireDefault(_errors);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -34,79 +31,97 @@ var User = function (_EntityBase) {
     function User(user) {
         _classCallCheck(this, User);
 
-        if (!user) throw _errors2.default.ERROR_EMPTY_USER;
+        if (!user) throw _allErrors2.default.ERROR_EMPTY_USER;
 
         var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, user));
 
-        _this.userName = user.userName;
-        _this.email = user.email;
+        _this.setUserName(user.userName);
+        _this.setEmail(user.email);
+        _this.setDisplayName(user.displayName);
+        _this.setPassword(user.password);
         _this.emailConfirmed = user.emailConfirmed;
-        _this.displayName = user.displayName;
         _this.imgUrl = user.imgUrl;
-        _this.password = user.password;
         _this.passwordHash = user.passwordHash;
-        _this.validate();
         return _this;
     }
 
     _createClass(User, [{
-        key: 'validate',
-        value: function validate() {
-            this._validateUserName();
-            this._validateEmail();
-            this._validatePassword();
-        }
-    }, {
         key: 'otherUsersWithSameUserNameOrEmail',
         value: function otherUsersWithSameUserNameOrEmail(otherUsers) {
             var _this2 = this;
 
             if (!otherUsers) return false;
-            var error = false;
+            var hasError = false;
             if (otherUsers.filter(function (user) {
                 return user.userName === _this2.userName;
             }).length > 0) {
-                this.addError(_errors2.default.ERROR_USER_USERNAME_IN_USE);
-                error = true;
+                this.addError({
+                    propName: 'userName',
+                    errorMsg: _allErrors2.default.ERROR_USER_USERNAME_IN_USE
+                });
+                hasError = true;
             }
             if (otherUsers.filter(function (user) {
                 return user.email === _this2.email;
             }).length > 0) {
-                this.addError(_errors2.default.ERROR_USER_EMAIL_IN_USE);
-                error = true;
+                this.addError({
+                    propName: 'email',
+                    errorMsg: _allErrors2.default.ERROR_USER_EMAIL_IN_USE
+                });
+                hasError = true;
             }
-            return error;
+            return hasError;
         }
     }, {
         key: 'update',
         value: function update(newUser) {
-            this.userName = newUser.userName;
-            this.email = newUser.email;
+            this.setUserName(newUser.userName);
+            this.setEmail(newUser.email);
+            this.setDisplayName(newUser.displayName);
             this.passwordHash = newUser.passwordHash;
-            this.displayName = newUser.displayName;
             this.imgUrl = newUser.imgUrl;
             this.dtChanged = new Date();
             return this;
         }
     }, {
-        key: '_validateUserName',
-        value: function _validateUserName() {
-            var validation = validateUserName(this.userName);
-            this.addErrors(validation.errors);
-            this.userName = validation.data;
+        key: 'setDisplayName',
+        value: function setDisplayName(displayName) {
+            this.addErrors((0, _ptzValidations.validateString)({
+                data: displayName,
+                propName: 'displayName',
+                propValidation: User.displayNameValidation
+            }));
+            this.displayName = displayName;
         }
     }, {
-        key: '_validateEmail',
-        value: function _validateEmail() {
-            var validation = validateEmail(this.email);
-            this.addErrors(validation.errors);
-            this.email = validation.data;
+        key: 'setUserName',
+        value: function setUserName(userName) {
+            this.addErrors((0, _ptzValidations.validateString)({
+                data: userName,
+                propName: 'userName',
+                propValidation: User.userNameValidation
+            }));
+            if (userName != null) this.userName = userName.toLowerCase();
         }
     }, {
-        key: '_validatePassword',
-        value: function _validatePassword() {
-            var validation = validatePassword(this.password);
-            this.addErrors(validation.errors);
+        key: 'setEmail',
+        value: function setEmail(email) {
+            this.addErrors((0, _ptzValidations.validateEmail)({
+                data: email,
+                propName: 'email',
+                propValidation: User.emailValidation
+            }));
+            if (email != null) this.email = email.toLowerCase();
+        }
+    }, {
+        key: 'setPassword',
+        value: function setPassword(password) {
+            this.addErrors((0, _ptzValidations.validateString)({
+                data: password,
+                propName: 'password',
+                propValidation: User.passwordValidation
+            }));
+            this.password = password;
         }
     }]);
 
@@ -115,54 +130,23 @@ var User = function (_EntityBase) {
 
 exports.default = User;
 
-User.userNameMinLength = 3;
-User.userNameMaxLength = 30;
-User.passwordMinLength = 6;
-User.passwordMaxLength = 30;
-User.userNameErrors = [_errors2.default.ERROR_USER_USERNAME_IN_USE, _errors2.default.ERROR_USER_USERNAME_REQUIRED, _errors2.default.ERROR_USER_USERNAME_MAXLENGTH, _errors2.default.ERROR_USER_USERNAME_MINLENGTH];
-User.emailErrors = [_errors2.default.ERROR_USER_EMAIL_IN_USE, _errors2.default.ERROR_USER_EMAIL_INVALID, _errors2.default.ERROR_USER_EMAIL_REQUIRED];
-User.displayNameErrors = [];
-User.passwordErrors = [_errors2.default.ERROR_USER_PASSWORD_MAXLENGTH, _errors2.default.ERROR_USER_PASSWORD_MINLENGTH];
-function validateEmail(email) {
-    var errors = (0, _ptzCoreDomain.validate)({
-        data: email,
-        requiredError: _errors2.default.ERROR_USER_EMAIL_REQUIRED
-    });
-    if (email != null) {
-        email = email.toLowerCase();
-        if (!(0, _ptzCoreDomain.validateEmail)(email)) errors.push(_errors2.default.ERROR_USER_EMAIL_INVALID);
-    }
-    return {
-        data: email,
-        errors: errors
-    };
-}
-function validateUserName(userName) {
-    var errors = (0, _ptzCoreDomain.validate)({
-        data: userName,
-        requiredError: _errors2.default.ERROR_USER_USERNAME_REQUIRED,
-        maxLength: User.userNameMaxLength,
-        maxLengthError: _errors2.default.ERROR_USER_USERNAME_MAXLENGTH,
-        minLength: User.userNameMinLength,
-        minLengthError: _errors2.default.ERROR_USER_USERNAME_MINLENGTH
-    });
-    if (userName != null) userName = userName.toLowerCase();
-    return {
-        data: userName,
-        errors: errors
-    };
-}
-function validatePassword(password) {
-    var errors = (0, _ptzCoreDomain.validate)({
-        data: password,
-        maxLength: User.passwordMaxLength,
-        maxLengthError: _errors2.default.ERROR_USER_PASSWORD_MAXLENGTH,
-        minLength: User.passwordMinLength,
-        minLengthError: _errors2.default.ERROR_USER_PASSWORD_MINLENGTH
-    });
-    return {
-        data: password,
-        errors: errors
-    };
-}
+User.displayNameValidation = {
+    required: true,
+    minLength: 2,
+    maxLength: 50
+};
+User.userNameValidation = {
+    required: true,
+    minLength: 3,
+    maxLength: 30
+};
+User.passwordValidation = {
+    required: false,
+    minLength: 6,
+    maxLength: 30
+};
+User.emailValidation = {
+    required: true
+};
+exports.User = User;
 //# sourceMappingURL=User.js.map
