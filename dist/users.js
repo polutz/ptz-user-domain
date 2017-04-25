@@ -7,23 +7,19 @@ exports.users = exports.allUsers = exports.alanmarcell = exports.angeloocana = e
 
 var _User = require('./User');
 
-var _User2 = _interopRequireDefault(_User);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var admin = exports.admin = new _User2.default({
+var admin = exports.admin = new _User.User({
     displayName: 'Admin',
     email: 'dev@polutz.com',
     userName: 'admin',
     password: 'testtest'
 }); // Users for seed and test data
-var angeloocana = exports.angeloocana = new _User2.default({
+var angeloocana = exports.angeloocana = new _User.User({
     displayName: 'Ângelo Ocanã',
     userName: 'angeloocana',
     email: 'angeloocana@gmail.com',
     password: 'testtest'
 });
-var alanmarcell = exports.alanmarcell = new _User2.default({
+var alanmarcell = exports.alanmarcell = new _User.User({
     displayName: 'Alan Marcell',
     userName: 'alanmarcell',
     email: 'alanmarcell@live.com',

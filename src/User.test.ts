@@ -5,9 +5,7 @@ import {
 
 import log from 'ptz-log';
 import { allErrors as allValidationErrors } from 'ptz-validations';
-import allErrors from './allErrors';
-import { IUser, IUserArgs } from './IUser';
-import User from './User';
+import { allErrors, IUser, IUserArgs, User } from './index';
 
 describe('User', () => {
     describe('UserName', () => {

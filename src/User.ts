@@ -1,30 +1,33 @@
-import { IEmailValidation, IError, IStringValidation, validateEmail, validateString } from 'ptz-validations';
+import {
+    IEmailValidation, IError,
+    IStringValidation, IValidations, validateEmail, validateString
+} from 'ptz-validations';
 import allErrors from './allErrors';
 import EntityBase from './EntityBase';
 import { IUser, IUserArgs } from './IUser';
 
-export default class User extends EntityBase implements IUser {
+export class User extends EntityBase implements IUser {
 
-    static displayNameValidation: IStringValidation = {
-        required: true,
-        minLength: 2,
-        maxLength: 50
-    };
-
-    static userNameValidation: IStringValidation = {
-        required: true,
-        minLength: 3,
-        maxLength: 30
-    };
-
-    static passwordValidation: IStringValidation = {
-        required: false,
-        minLength: 6,
-        maxLength: 30
-    };
-
-    static emailValidation: IEmailValidation = {
-        required: true
+    static validations: IValidations = {
+        displayName: validateString({
+            required: true,
+            minLength: 2,
+            maxLength: 50
+        }),
+        userName: validateString({
+            required: true,
+            minLength: 3,
+            maxLength: 30,
+            toLowerCase: true
+        }),
+        password: validateString({
+            required: false,
+            minLength: 6,
+            maxLength: 30
+        }),
+        email: validateEmail({
+            required: true
+        })
     };
 
     userName: string;
@@ -35,21 +38,22 @@ export default class User extends EntityBase implements IUser {
     password?: string;
     passwordHash?: string;
 
-    constructor(user: IUserArgs) {
-        if (!user)
+    constructor(args: IUserArgs) {
+        if (!args)
             throw allErrors.ERROR_EMPTY_USER;
 
-        super(user);
+        super(args);
 
-        // create set when prop need validation
-        this.setUserName(user.userName);
-        this.setEmail(user.email);
-        this.setDisplayName(user.displayName);
-        this.setPassword(user.password);
+        args = this.validate(User.validations, args);
 
-        this.emailConfirmed = user.emailConfirmed;
-        this.imgUrl = user.imgUrl;
-        this.passwordHash = user.passwordHash;
+        this.userName = args.userName;
+        this.email = args.email;
+        this.displayName = args.displayName;
+        this.password = args.password;
+
+        this.emailConfirmed = args.emailConfirmed;
+        this.imgUrl = args.imgUrl;
+        this.passwordHash = args.passwordHash;
     }
 
     otherUsersWithSameUserNameOrEmail(otherUsers: IUserArgs[]): boolean {
@@ -78,59 +82,13 @@ export default class User extends EntityBase implements IUser {
     }
 
     update(newUser: IUser): IUser {
-        this.setUserName(newUser.userName);
-        this.setEmail(newUser.email);
-        this.setDisplayName(newUser.displayName);
+        this.userName = newUser.userName;
+        this.email = newUser.email;
+        this.displayName = newUser.displayName;
 
         this.passwordHash = newUser.passwordHash;
         this.imgUrl = newUser.imgUrl;
         this.dtChanged = new Date();
         return this;
     }
-
-    private setDisplayName(displayName: string) {
-        this.addErrors(validateString({
-            data: displayName,
-            propName: 'displayName',
-            propValidation: User.displayNameValidation
-        }));
-
-        this.displayName = displayName;
-    }
-
-    private setUserName(userName: string) {
-        this.addErrors(validateString({
-            data: userName,
-            propName: 'userName',
-            propValidation: User.userNameValidation
-        }));
-
-        if (userName != null)
-            this.userName = userName.toLowerCase();
-    }
-
-    private setEmail(email: string) {
-        this.addErrors(validateEmail({
-            data: email,
-            propName: 'email',
-            propValidation: User.emailValidation
-        }));
-
-        if (email != null)
-            this.email = email.toLowerCase();
-    }
-
-    private setPassword(password: string) {
-        this.addErrors(validateString({
-            data: password,
-            propName: 'password',
-            propValidation: User.passwordValidation
-        }));
-
-        this.password = password;
-    }
 }
-
-export {
-    User
-};

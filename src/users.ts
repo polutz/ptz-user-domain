@@ -1,6 +1,6 @@
 // Users for seed and test data
 
-import User from './User';
+import { User } from './User';
 
 export const admin = new User({
     displayName: 'Admin',
