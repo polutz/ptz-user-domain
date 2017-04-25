@@ -1,6 +1,11 @@
 ## master
 
 
+## 1.7.0 (April 25, 2017)
+
+* Update to ptz-validations 1.2.0:
+    - Add static validations prop to User and AuthenticateUserForm.
+
 ## 1.6.0 (April 24, 2017)
 
 * Using ptz-validations.
