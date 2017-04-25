@@ -3,12 +3,12 @@
     "module": "es6",
     "moduleResolution": "node",
     "noImplicitAny": false,
-    "removeComments": true,
+    "removeComments": false,
     "preserveConstEnums": true,
     "target": "ES6",
     "sourceMap": true,
     "listFiles": false,
-    "outDir": "dist/",
+    "outDir": "dist-es6/",
     "allowSyntheticDefaultImports": true
   },
   "include": [

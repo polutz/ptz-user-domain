@@ -16,7 +16,7 @@ var admin = exports.admin = new _User2.default({
     email: 'dev@polutz.com',
     userName: 'admin',
     password: 'testtest'
-});
+}); // Users for seed and test data
 var angeloocana = exports.angeloocana = new _User2.default({
     displayName: 'Ângelo Ocanã',
     userName: 'angeloocana',
@@ -37,4 +37,5 @@ var users = exports.users = {
     alanmarcell: alanmarcell,
     allUsers: allUsers
 };
+//# sourceMappingURL=users.js.map
 //# sourceMappingURL=users.js.map

@@ -27,3 +27,4 @@ var EntityBase = function (_EntityBaseBase) {
 
 
 exports.default = EntityBase;
+//# sourceMappingURL=EntityBase.js.map

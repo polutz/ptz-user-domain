@@ -33,6 +33,7 @@ var User = function (_EntityBase) {
 
         if (!user) throw _allErrors2.default.ERROR_EMPTY_USER;
 
+        // create set when prop need validation
         var _this = _possibleConstructorReturn(this, (User.__proto__ || Object.getPrototypeOf(User)).call(this, user));
 
         _this.setUserName(user.userName);
@@ -149,4 +150,5 @@ User.emailValidation = {
     required: true
 };
 exports.User = User;
+//# sourceMappingURL=User.js.map
 //# sourceMappingURL=User.js.map

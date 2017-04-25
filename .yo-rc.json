@@ -10,7 +10,8 @@
     "promptValues": {
       "appname": "ptz-user-domain",
       "githubAuthor": "polutz",
-      "runNpmInstall": true
+      "runNpmInstall": true,
+      "codecovToken": ""
     }
   }
 }
