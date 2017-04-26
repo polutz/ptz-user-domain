@@ -1,9 +1,7 @@
 import {
-    contains, containsFind, deepEqual, emptyArray, equal, notContains, notContainsFind,
+    containsFind, emptyArray, equal, notContainsFind,
     notEqual, notOk, ok
 } from 'ptz-assert';
-
-import log from 'ptz-log';
 import { allErrors as allValidationErrors } from 'ptz-validations';
 import { allErrors, IUser, IUserArgs, User } from './index';
 

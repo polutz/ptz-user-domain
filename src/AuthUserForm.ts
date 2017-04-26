@@ -2,7 +2,6 @@ import {
     HaveValidation, IStringValidation, IValidateContext, IValidateResult, IValidations,
     validateEmail, validateString
 } from 'ptz-validations';
-import allErrors from './allErrors';
 import { IAuthUserForm, IAuthUserFormArgs } from './IAuthUserForm';
 import { User } from './User';
 

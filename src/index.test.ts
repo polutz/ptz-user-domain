@@ -1,26 +1,7 @@
-import { equal, ok } from 'ptz-assert';
+import { ok } from 'ptz-assert';
 import {
     allErrors,
     AuthUserForm,
-    IAppFuncArgs,
-    IAuthToken,
-    IAuthUserArgs,
-    IAuthUserForm,
-    IAuthUserFormArgs,
-    ICreatedBy,
-    IDeleteUserArgs,
-    IFindUsersArgs,
-    IForgotPasswordArgs,
-    ISaveUserArgs,
-    IUpdatePasswordArgs,
-    IUpdatePasswordTokenArgs,
-    IUser,
-    IUserApp,
-    IUserAppArgs,
-    IUserArgs,
-    IUserForLog,
-    IUserRepository,
-    IVerifyAuthTokenArgs,
     User,
     users,
     validateUserNameOrEmail

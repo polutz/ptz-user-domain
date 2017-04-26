@@ -1,6 +1,5 @@
 import {
-    IEmailValidation, IError,
-    IStringValidation, IValidations, validateEmail, validateString
+    IValidations, validateEmail, validateString
 } from 'ptz-validations';
 import allErrors from './allErrors';
 import EntityBase from './EntityBase';

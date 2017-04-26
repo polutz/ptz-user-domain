@@ -1,8 +1,7 @@
-import { containsFind, deepEqual, emptyArray, equal, notContainsFind, notEqual, notOk, ok } from 'ptz-assert';
+import { containsFind, equal, notContainsFind } from 'ptz-assert';
 import log from 'ptz-log';
 import { allErrors as allValidationErrors } from 'ptz-validations';
-import allErrors from './allErrors';
-import { AuthUserForm, IAuthUserForm, IAuthUserFormArgs } from './index';
+import { AuthUserForm } from './index';
 
 describe('AuthUserForm', () => {
     describe('userNameOrEmail', () => {
