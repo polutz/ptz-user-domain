@@ -1,6 +1,10 @@
 ## master
 
 
+## 1.8.1 (April 26, 2017)
+
+* Fix unused variables.
+
 ## 1.8.0 (April 26, 2017)
 
 * Rename Authenticate to Auth.
