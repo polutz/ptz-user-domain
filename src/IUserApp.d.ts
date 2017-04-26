@@ -1,10 +1,10 @@
 import { ICreatedBy } from 'ptz-core-domain';
 import { Ilog } from 'ptz-log';
+import { IError } from 'ptz-validations';
 import { IAppFuncArgs } from './IAppFuncArgs';
 import { IAuthUserFormArgs } from './IAuthUserForm';
 import { IUser, IUserArgs } from './IUser';
 import { IUserRepository } from './IUserRepository';
-import { IError } from 'ptz-validations';
 
 export interface ISaveUserArgs extends IAppFuncArgs {
     userArgs: IUserArgs;
