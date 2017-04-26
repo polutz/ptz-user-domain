@@ -1,4 +1,4 @@
-export { AuthenticateUserForm } from './AuthenticateUserForm';
+export { AuthUserForm, validateUserNameOrEmail } from './AuthUserForm';
 export { allErrors } from './allErrors';
 export { User } from './User';
 export { users } from './users';

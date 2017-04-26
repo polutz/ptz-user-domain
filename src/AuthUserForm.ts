@@ -3,10 +3,10 @@ import {
     validateEmail, validateString
 } from 'ptz-validations';
 import allErrors from './allErrors';
-import { IAuthenticateUserForm, IAuthenticateUserFormArgs } from './IAuthenticateUserForm';
+import { IAuthUserForm, IAuthUserFormArgs } from './IAuthUserForm';
 import { User } from './User';
 
-export class AuthenticateUserForm extends HaveValidation implements IAuthenticateUserForm {
+export class AuthUserForm extends HaveValidation implements IAuthUserForm {
 
     static validations: IValidations = {
         password: validateString(Object.assign({}, User.validations.password.propValidation, {
@@ -20,10 +20,10 @@ export class AuthenticateUserForm extends HaveValidation implements IAuthenticat
     userNameOrEmail: string;
     password: string;
 
-    constructor(args: IAuthenticateUserFormArgs) {
+    constructor(args: IAuthUserFormArgs) {
         super(args);
 
-        args = this.validate(AuthenticateUserForm.validations, args);
+        args = this.validate(AuthUserForm.validations, args);
 
         this.userNameOrEmail = args.userNameOrEmail;
         this.password = args.password;

@@ -1,11 +1,11 @@
 TN:
-SF:/home/angeloocana/dev/polutz/ptz-user-domain/dist-es6/AuthenticateUserForm.js
-FN:4,AuthenticateUserForm
+SF:/home/angeloocana/dev/polutz/ptz-user-domain/dist-es6/AuthUserForm.js
+FN:4,AuthUserForm
 FN:19,validateUserNameOrEmail
 FN:20,validate
 FNF:3
 FNH:3
-FNDA:11,AuthenticateUserForm
+FNDA:11,AuthUserForm
 FNDA:1,validateUserNameOrEmail
 FNDA:11,validate
 DA:1,1

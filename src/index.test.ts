@@ -1,31 +1,37 @@
 import { equal, ok } from 'ptz-assert';
 import {
     allErrors,
-    AuthenticateUserForm,
-
+    AuthUserForm,
     IAppFuncArgs,
-    IAuthenticateUserForm, IAuthenticateUserFormArgs,
     IAuthToken,
-    ICreatedBy, IUser, IUserApp,
+    IAuthUserArgs,
+    IAuthUserForm,
+    IAuthUserFormArgs,
+    ICreatedBy,
+    IDeleteUserArgs,
+    IFindUsersArgs,
+    IForgotPasswordArgs,
+    ISaveUserArgs,
+    IUpdatePasswordArgs,
+    IUpdatePasswordTokenArgs,
+    IUser,
+    IUserApp,
     IUserAppArgs,
-    IUserAppIAuthenticateUserArgs,
-    IUserAppIFindArgs,
-    IUserAppIGetAuthTokenArgs,
-    IUserAppISaveArgs,
-    IUserAppIVerifyAuthTokenArgs,
     IUserArgs,
     IUserForLog,
     IUserRepository,
-
+    IVerifyAuthTokenArgs,
     User,
-    users
+    users,
+    validateUserNameOrEmail
 } from './index';
 
 describe('ptz-user-domain', () => {
     describe('exports', () => {
         it('allErrors', () => ok(allErrors));
-        it('AuthenticateUserForm', () => ok(AuthenticateUserForm));
+        it('AuthUserForm', () => ok(AuthUserForm));
         it('User', () => ok(User));
         it('users', () => ok(users));
+        it('validateUserNameOrEmail', () => ok(validateUserNameOrEmail));
     });
 });

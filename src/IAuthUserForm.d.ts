@@ -1,11 +1,11 @@
 import { IHaveValidation, IHaveValidationArgs } from 'ptz-validations';
 
-export interface IAuthenticateUserForm extends IHaveValidation {
+export interface IAuthUserForm extends IHaveValidation {
     userNameOrEmail: string;
     password: string;
 }
 
-export interface IAuthenticateUserFormArgs extends IHaveValidationArgs {
+export interface IAuthUserFormArgs extends IHaveValidationArgs {
     userNameOrEmail: string;
     password: string;
 }

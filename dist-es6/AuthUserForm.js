@@ -1,14 +1,14 @@
 import { HaveValidation, validateEmail, validateString } from 'ptz-validations';
 import { User } from './User';
-export class AuthenticateUserForm extends HaveValidation {
+export class AuthUserForm extends HaveValidation {
     constructor(args) {
         super(args);
-        args = this.validate(AuthenticateUserForm.validations, args);
+        args = this.validate(AuthUserForm.validations, args);
         this.userNameOrEmail = args.userNameOrEmail;
         this.password = args.password;
     }
 }
-AuthenticateUserForm.validations = {
+AuthUserForm.validations = {
     password: validateString(Object.assign({}, User.validations.password.propValidation, {
         required: true
     })),
@@ -29,4 +29,4 @@ export function validateUserNameOrEmail(propValidation) {
         propValidation
     };
 }
-//# sourceMappingURL=AuthenticateUserForm.js.map
+//# sourceMappingURL=AuthUserForm.js.map

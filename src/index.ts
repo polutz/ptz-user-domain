@@ -1,18 +1,21 @@
-export { AuthenticateUserForm } from './AuthenticateUserForm';
+export { AuthUserForm, validateUserNameOrEmail } from './AuthUserForm';
 export { allErrors } from './allErrors';
 export { IAppFuncArgs } from './IAppFuncArgs';
-export { IAuthenticateUserForm, IAuthenticateUserFormArgs } from './IAuthenticateUserForm';
+export { IAuthUserForm, IAuthUserFormArgs } from './IAuthUserForm';
 export { ICreatedBy } from './ICreatedBy';
 export { IUser, IUserArgs, IUserForLog } from './IUser';
 export {
     IAuthToken,
     IUserApp,
     IUserAppArgs,
-    IUserAppIAuthenticateUserArgs,
-    IUserAppIFindArgs,
-    IUserAppIGetAuthTokenArgs,
-    IUserAppISaveArgs,
-    IUserAppIVerifyAuthTokenArgs
+    IAuthUserArgs,
+    IDeleteUserArgs,
+    IFindUsersArgs,
+    IForgotPasswordArgs,
+    ISaveUserArgs,
+    IUpdatePasswordArgs,
+    IUpdatePasswordTokenArgs,
+    IVerifyAuthTokenArgs
 } from './IUserApp';
 export { IUserRepository } from './IUserRepository';
 export { User } from './User';

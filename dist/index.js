@@ -4,12 +4,18 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _AuthenticateUserForm = require('./AuthenticateUserForm');
+var _AuthUserForm = require('./AuthUserForm');
 
-Object.defineProperty(exports, 'AuthenticateUserForm', {
+Object.defineProperty(exports, 'AuthUserForm', {
   enumerable: true,
   get: function get() {
-    return _AuthenticateUserForm.AuthenticateUserForm;
+    return _AuthUserForm.AuthUserForm;
+  }
+});
+Object.defineProperty(exports, 'validateUserNameOrEmail', {
+  enumerable: true,
+  get: function get() {
+    return _AuthUserForm.validateUserNameOrEmail;
   }
 });
 

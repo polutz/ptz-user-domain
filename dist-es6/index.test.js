@@ -1,11 +1,12 @@
 import { ok } from 'ptz-assert';
-import { allErrors, AuthenticateUserForm, User, users } from './index';
+import { allErrors, AuthUserForm, User, users, validateUserNameOrEmail } from './index';
 describe('ptz-user-domain', () => {
     describe('exports', () => {
         it('allErrors', () => ok(allErrors));
-        it('AuthenticateUserForm', () => ok(AuthenticateUserForm));
+        it('AuthUserForm', () => ok(AuthUserForm));
         it('User', () => ok(User));
         it('users', () => ok(users));
+        it('validateUserNameOrEmail', () => ok(validateUserNameOrEmail));
     });
 });
 //# sourceMappingURL=index.test.js.map

@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.AuthenticateUserForm = undefined;
+exports.AuthUserForm = undefined;
 exports.validateUserNameOrEmail = validateUserNameOrEmail;
 
 var _ptzValidations = require('ptz-validations');
@@ -16,24 +16,24 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var AuthenticateUserForm = exports.AuthenticateUserForm = function (_HaveValidation) {
-    _inherits(AuthenticateUserForm, _HaveValidation);
+var AuthUserForm = exports.AuthUserForm = function (_HaveValidation) {
+    _inherits(AuthUserForm, _HaveValidation);
 
-    function AuthenticateUserForm(args) {
-        _classCallCheck(this, AuthenticateUserForm);
+    function AuthUserForm(args) {
+        _classCallCheck(this, AuthUserForm);
 
-        var _this = _possibleConstructorReturn(this, (AuthenticateUserForm.__proto__ || Object.getPrototypeOf(AuthenticateUserForm)).call(this, args));
+        var _this = _possibleConstructorReturn(this, (AuthUserForm.__proto__ || Object.getPrototypeOf(AuthUserForm)).call(this, args));
 
-        args = _this.validate(AuthenticateUserForm.validations, args);
+        args = _this.validate(AuthUserForm.validations, args);
         _this.userNameOrEmail = args.userNameOrEmail;
         _this.password = args.password;
         return _this;
     }
 
-    return AuthenticateUserForm;
+    return AuthUserForm;
 }(_ptzValidations.HaveValidation);
 
-AuthenticateUserForm.validations = {
+AuthUserForm.validations = {
     password: (0, _ptzValidations.validateString)(Object.assign({}, _User.User.validations.password.propValidation, {
         required: true
     })),
@@ -51,5 +51,5 @@ function validateUserNameOrEmail(propValidation) {
         propValidation: propValidation
     };
 }
-//# sourceMappingURL=AuthenticateUserForm.js.map
-//# sourceMappingURL=AuthenticateUserForm.js.map
+//# sourceMappingURL=AuthUserForm.js.map
+//# sourceMappingURL=AuthUserForm.js.map

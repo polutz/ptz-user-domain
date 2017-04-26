@@ -9,14 +9,17 @@ describe('ptz-user-domain', function () {
         it('allErrors', function () {
             return (0, _ptzAssert.ok)(_index.allErrors);
         });
-        it('AuthenticateUserForm', function () {
-            return (0, _ptzAssert.ok)(_index.AuthenticateUserForm);
+        it('AuthUserForm', function () {
+            return (0, _ptzAssert.ok)(_index.AuthUserForm);
         });
         it('User', function () {
             return (0, _ptzAssert.ok)(_index.User);
         });
         it('users', function () {
             return (0, _ptzAssert.ok)(_index.users);
+        });
+        it('validateUserNameOrEmail', function () {
+            return (0, _ptzAssert.ok)(_index.validateUserNameOrEmail);
         });
     });
 });
