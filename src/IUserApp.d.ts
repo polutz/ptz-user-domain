@@ -4,6 +4,7 @@ import { IAppFuncArgs } from './IAppFuncArgs';
 import { IAuthUserFormArgs } from './IAuthUserForm';
 import { IUser, IUserArgs } from './IUser';
 import { IUserRepository } from './IUserRepository';
+import { IError } from 'ptz-validations';
 
 export interface ISaveUserArgs extends IAppFuncArgs {
     userArgs: IUserArgs;
@@ -43,7 +44,7 @@ export interface IFindUsersArgs extends IAppFuncArgs {
 export interface IAuthToken {
     user: IUser;
     authToken?: string;
-    errors: string[];
+    errors: IError[];
 }
 
 export interface IUserApp {
