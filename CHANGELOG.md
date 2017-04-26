@@ -1,6 +1,10 @@
 ## master
 
 
+## 1.8.2 (April 26, 2017)
+
+* Fix IAuthToken.errors update type from string[] to IError[].
+
 ## 1.8.1 (April 26, 2017)
 
 * Fix unused variables.
