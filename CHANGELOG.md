@@ -1,6 +1,11 @@
 ## master
 
 
+## 1.8.0 (April 26, 2017)
+
+* Rename Authenticate to Auth.
+* Rename UserApp func args.
+
 ## 1.7.0 (April 25, 2017)
 
 * Update to ptz-validations 1.2.0:
