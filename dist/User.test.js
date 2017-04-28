@@ -151,9 +151,16 @@ describe('User', function () {
             });
             var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([]);
             (0, _ptzAssert.notOk)(thereIsOtherUsers);
-            console.log('******************************');
-            console.log(user);
-            console.log('******************************');
+            (0, _ptzAssert.emptyArray)(user.errors);
+        });
+        it('should return false when otherUsers is null', function () {
+            var user = new _index.User({
+                userName: 'allanegidio',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            });
+            var thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail(null);
+            (0, _ptzAssert.notOk)(thereIsOtherUsers);
             (0, _ptzAssert.emptyArray)(user.errors);
         });
         it('should return true and addError when userName already in use', function () {

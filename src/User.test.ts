@@ -170,9 +170,19 @@ describe('User', () => {
             const thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail([]);
 
             notOk(thereIsOtherUsers);
-            console.log('******************************');
-            console.log(user);
-            console.log('******************************');
+            emptyArray(user.errors);
+        });
+
+        it('should return false when otherUsers is null', () => {
+            const user = new User({
+                userName: 'allanegidio',
+                email: 'allan.egidio@outlook.com',
+                displayName: 'Allan Egidio'
+            });
+
+            const thereIsOtherUsers = user.otherUsersWithSameUserNameOrEmail(null);
+
+            notOk(thereIsOtherUsers);
             emptyArray(user.errors);
         });
 
