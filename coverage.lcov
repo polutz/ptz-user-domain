@@ -1,5 +1,5 @@
 TN:
-SF:/home/angeloocana/dev/polutz/ptz-user-domain/dist-es6/AuthUserForm.js
+SF:/projects/polutz/ptz-user-domain/dist-esnext/AuthUserForm.js
 FN:4,AuthUserForm
 FN:19,validateUserNameOrEmail
 FN:20,validate
@@ -32,7 +32,7 @@ BRF:6
 BRH:5
 end_of_record
 TN:
-SF:/home/angeloocana/dev/polutz/ptz-user-domain/dist-es6/EntityBase.js
+SF:/projects/polutz/ptz-user-domain/dist-esnext/EntityBase.js
 FNF:0
 FNH:0
 DA:1,1
@@ -42,7 +42,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/angeloocana/dev/polutz/ptz-user-domain/dist-es6/User.js
+SF:/projects/polutz/ptz-user-domain/dist-esnext/User.js
 FN:5,User
 FN:22,(anonymous_10)
 FN:29,(anonymous_11)
@@ -100,7 +100,7 @@ BRF:10
 BRH:7
 end_of_record
 TN:
-SF:/home/angeloocana/dev/polutz/ptz-user-domain/dist-es6/allErrors.js
+SF:/projects/polutz/ptz-user-domain/dist-esnext/allErrors.js
 FNF:0
 FNH:0
 DA:1,1
@@ -110,7 +110,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:/home/angeloocana/dev/polutz/ptz-user-domain/dist-es6/users.js
+SF:/projects/polutz/ptz-user-domain/dist-esnext/users.js
 FNF:0
 FNH:0
 DA:2,1
