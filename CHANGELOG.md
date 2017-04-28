@@ -1,6 +1,13 @@
 ## master
 
 
+## 1.8.3 (April 28, 2017)
+
+* Transpiling Typescript to esnext.
+* Add test for:
+    - new User with null args;
+    - null otherUsers.    
+
 ## 1.8.2 (April 26, 2017)
 
 * Fix IAuthToken.errors update type from string[] to IError[].
