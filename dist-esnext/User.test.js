@@ -1,4 +1,4 @@
-import { containsFind, emptyArray, equal, notContainsFind, notEqual, notOk, ok } from 'ptz-assert';
+import { containsFind, emptyArray, equal, notContainsFind, notEqual, notOk, ok, throws } from 'ptz-assert';
 import { allErrors as allValidationErrors } from 'ptz-validations';
 import { allErrors, User } from './index';
 describe('User', () => {
@@ -174,6 +174,9 @@ describe('User', () => {
             containsFind(user.errors, e => e.propName === 'email'
                 && e.errorMsg === allErrors.ERROR_USER_EMAIL_IN_USE);
         });
+    });
+    it('throw error when null args', () => {
+        throws(() => new User(null));
     });
 });
 //# sourceMappingURL=User.test.js.map

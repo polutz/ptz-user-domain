@@ -191,6 +191,11 @@ describe('User', function () {
             });
         });
     });
+    it('throw error when null args', function () {
+        (0, _ptzAssert.throws)(function () {
+            return new _index.User(null);
+        });
+    });
 });
 //# sourceMappingURL=User.test.js.map
 //# sourceMappingURL=User.test.js.map
