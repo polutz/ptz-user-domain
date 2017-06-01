@@ -1,5 +1,5 @@
 import { ICreatedBy } from 'ptz-core-domain';
-import { Ilog } from 'ptz-log';
+import { ILog } from 'ptz-log';
 import { IError } from 'ptz-validations';
 import { IAppFuncArgs } from './IAppFuncArgs';
 import { IAuthUserFormArgs } from './IAuthUserForm';
@@ -67,5 +67,5 @@ export interface IUserApp {
 
 export interface IUserAppArgs {
     userRepository: IUserRepository;
-    log?: Ilog;
+    log?: ILog;
 }
