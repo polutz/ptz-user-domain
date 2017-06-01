@@ -28,12 +28,12 @@ export interface IForgotPasswordArgs extends IAppFuncArgs {
 
 export interface IUpdatePasswordTokenArgs extends IAppFuncArgs {
     token: string;
-    newPasword: string;
+    newPassword: string;
 }
 
 export interface IUpdatePasswordArgs extends IAppFuncArgs {
-    currentPasword: string;
-    newPasword: string;
+    currentPassword: string;
+    newPassword: string;
 }
 
 export interface IFindUsersArgs extends IAppFuncArgs {
