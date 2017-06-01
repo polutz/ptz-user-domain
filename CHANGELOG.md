@@ -1,6 +1,11 @@
 ## master
 
 
+## 1.8.4 (June 1, 2017)
+
+* Fix rename Pasword to Password.
+* Update ptz-log.
+
 ## 1.8.3 (April 28, 2017)
 
 * Transpiling Typescript to esnext.
