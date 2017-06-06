@@ -47,7 +47,8 @@
     "opn-cli": "^3.1.0"
   },
   "dependencies": {
-    "ptz-core-domain": "^1.1.4",
-    "ptz-log": "^1.1.0"
+    "ptz-core-domain": "^2.0.0",
+    "ptz-log": "^1.1.0",
+    "ptz-validations": "^2.0.1"
   }
 }

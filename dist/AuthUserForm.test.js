@@ -15,32 +15,32 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 describe('AuthUserForm', function () {
     describe('userNameOrEmail', function () {
         it('Add error when empty userNameOrEmail', function () {
-            var user = new _index.AuthUserForm({ userNameOrEmail: '', password: '' });
+            var user = (0, _index.authUserForm)({ userNameOrEmail: '', password: '' });
             (0, _ptzAssert.containsFind)(user.errors, function (e) {
                 return e.propName === 'userNameOrEmail' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
             });
         });
         describe('UserName', function () {
             it('Do not add error when valid username', function () {
-                var user = new _index.AuthUserForm({ userNameOrEmail: 'angeloocana', password: '' });
+                var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana', password: '' });
                 (0, _ptzAssert.notContainsFind)(user.errors, function (e) {
                     return e.propName === 'userNameOrEmail' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
                 });
             });
             it('Should be lowercase', function () {
-                var user = new _index.AuthUserForm({ userNameOrEmail: 'AnGeLoOcAnA', password: '' });
+                var user = (0, _index.authUserForm)({ userNameOrEmail: 'AnGeLoOcAnA', password: '' });
                 (0, _ptzAssert.equal)(user.userNameOrEmail, 'angeloocana');
             });
         });
         describe('Email', function () {
             it('Add error when invalid email', function () {
-                var user = new _index.AuthUserForm({ userNameOrEmail: 'angeloocana@gmailcom', password: '' });
+                var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana@gmailcom', password: '' });
                 (0, _ptzAssert.containsFind)(user.errors, function (e) {
                     return e.propName === 'userNameOrEmail' && e.errorMsg === _ptzValidations.allErrors.INVALID_EMAIL;
                 });
             });
             it('Do not add error when valid email', function () {
-                var user = new _index.AuthUserForm({ userNameOrEmail: 'angeloocana@gmail.com', password: '' });
+                var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana@gmail.com', password: '' });
                 (0, _ptzAssert.notContainsFind)(user.errors, function (e) {
                     return e.propName === 'userNameOrEmail' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
                 });
@@ -49,40 +49,40 @@ describe('AuthUserForm', function () {
                 });
             });
             it('Should be lowercase', function () {
-                var user = new _index.AuthUserForm({ userNameOrEmail: 'AnGeLoOcAnA@gMaIl.CoM', password: '' });
+                var user = (0, _index.authUserForm)({ userNameOrEmail: 'AnGeLoOcAnA@gMaIl.CoM', password: '' });
                 (0, _ptzAssert.equal)(user.userNameOrEmail, 'angeloocana@gmail.com');
             });
         });
     });
     describe('Password', function () {
         it('Add error when null password', function () {
-            var user = new _index.AuthUserForm({ userNameOrEmail: 'angeloocana', password: null });
+            var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana', password: null });
             (0, _ptzLog2.default)('user.errors', user.errors);
             (0, _ptzAssert.containsFind)(user.errors, function (e) {
                 return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
             });
         });
         it('Add error when empty password', function () {
-            var user = new _index.AuthUserForm({ userNameOrEmail: 'angeloocana', password: '' });
+            var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana', password: '' });
             (0, _ptzLog2.default)('user.errors', user.errors);
             (0, _ptzAssert.containsFind)(user.errors, function (e) {
                 return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
             });
         });
         it('Do not add error when valid password', function () {
-            var user = new _index.AuthUserForm({ userNameOrEmail: 'angeloocana', password: 'superSecret' });
+            var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana', password: 'superSecret' });
             (0, _ptzAssert.notContainsFind)(user.errors, function (e) {
                 return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
             });
         });
         it('Add error when minlength password', function () {
-            var user = new _index.AuthUserForm({ userNameOrEmail: 'angeloocana', password: 'a' });
+            var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana', password: 'a' });
             (0, _ptzAssert.containsFind)(user.errors, function (e) {
                 return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.MIN_LENGTH;
             });
         });
         it('Add error when maxlength password', function () {
-            var user = new _index.AuthUserForm({
+            var user = (0, _index.authUserForm)({
                 userNameOrEmail: 'angeloocana',
                 password: 'labalblhblhbohblabcascjbascijbascjbasclasbclasbash'
             });

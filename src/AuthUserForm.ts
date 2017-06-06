@@ -1,47 +1,25 @@
-import {
-    HaveValidation, IStringValidation, IValidateContext, IValidateResult, IValidations,
-    validateEmail, validateString
-} from 'ptz-validations';
-import { IAuthUserForm, IAuthUserFormArgs } from './IAuthUserForm';
-import { User } from './User';
+import * as V from 'ptz-validations';
+import R from 'ramda';
+import { getPasswordValidation, userNameValidation } from './createUser';
+import { IAuthUserForm } from './IAuthUserForm';
 
-export class AuthUserForm extends HaveValidation implements IAuthUserForm {
+/**
+ * Validate UserName or E-mail to login.
+ */
+export const validateUserNameOrEmail = R.curry((opts: V.IStringValidation, propName, obj) => {
+    const propValue = R.prop<string>(propName, obj);
 
-    static validations: IValidations = {
-        password: validateString(Object.assign({}, User.validations.password.propValidation, {
-            required: true
-        })),
-        userNameOrEmail: validateUserNameOrEmail(Object.assign({}, User.validations.userName.propValidation, {
-            required: true
-        }))
-    };
+    return propValue.indexOf('@') >= 0
+        ? V.validateEmail(opts, propName, obj)
+        : userNameValidation(propName, obj);
+});
 
-    userNameOrEmail: string;
-    password: string;
-
-    constructor(args: IAuthUserFormArgs) {
-        super(args);
-
-        args = this.validate(AuthUserForm.validations, args);
-
-        this.userNameOrEmail = args.userNameOrEmail;
-        this.password = args.password;
-    }
-}
-
-export function validateUserNameOrEmail(propValidation: IStringValidation): IValidateResult<IStringValidation, string> {
-    function validate(context: IValidateContext<string>): IValidateContext<string> {
-
-        if (context.data && context.data.indexOf('@') >= 0)
-            context = validateEmail(propValidation).validate(context);
-        else
-            context = validateString(propValidation).validate(context);
-
-        return context;
-    }
-
-    return {
-        validate,
-        propValidation
-    };
-}
+/**
+ * Authenticate User Form.
+ */
+export const authUserForm = V.validate<IAuthUserForm>({
+    userNameOrEmail: validateUserNameOrEmail({
+        required: true,
+    }),
+    password: getPasswordValidation(true)
+});

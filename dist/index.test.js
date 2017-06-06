@@ -1,27 +1,3 @@
-'use strict';
-
-var _ptzAssert = require('ptz-assert');
-
-var _index = require('./index');
-
-describe('ptz-user-domain', function () {
-    describe('exports', function () {
-        it('allErrors', function () {
-            return (0, _ptzAssert.ok)(_index.allErrors);
-        });
-        it('AuthUserForm', function () {
-            return (0, _ptzAssert.ok)(_index.AuthUserForm);
-        });
-        it('User', function () {
-            return (0, _ptzAssert.ok)(_index.User);
-        });
-        it('users', function () {
-            return (0, _ptzAssert.ok)(_index.users);
-        });
-        it('validateUserNameOrEmail', function () {
-            return (0, _ptzAssert.ok)(_index.validateUserNameOrEmail);
-        });
-    });
-});
 //# sourceMappingURL=index.test.js.map
+"use strict";
 //# sourceMappingURL=index.test.js.map

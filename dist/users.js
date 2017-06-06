@@ -5,21 +5,21 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.users = exports.allUsers = exports.alanmarcell = exports.angeloocana = exports.admin = undefined;
 
-var _User = require('./User');
+var _createUser = require('./createUser');
 
-var admin = exports.admin = new _User.User({
+var admin = exports.admin = (0, _createUser.createUser)({
     displayName: 'Admin',
     email: 'dev@polutz.com',
     userName: 'admin',
     password: 'testtest'
 }); // Users for seed and test data
-var angeloocana = exports.angeloocana = new _User.User({
+var angeloocana = exports.angeloocana = (0, _createUser.createUser)({
     displayName: 'Ângelo Ocanã',
     userName: 'angeloocana',
     email: 'angeloocana@gmail.com',
     password: 'testtest'
 });
-var alanmarcell = exports.alanmarcell = new _User.User({
+var alanmarcell = exports.alanmarcell = (0, _createUser.createUser)({
     displayName: 'Alan Marcell',
     userName: 'alanmarcell',
     email: 'alanmarcell@live.com',

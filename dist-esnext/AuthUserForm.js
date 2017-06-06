@@ -1,32 +1,22 @@
-import { HaveValidation, validateEmail, validateString } from 'ptz-validations';
-import { User } from './User';
-export class AuthUserForm extends HaveValidation {
-    constructor(args) {
-        super(args);
-        args = this.validate(AuthUserForm.validations, args);
-        this.userNameOrEmail = args.userNameOrEmail;
-        this.password = args.password;
-    }
-}
-AuthUserForm.validations = {
-    password: validateString(Object.assign({}, User.validations.password.propValidation, {
-        required: true
-    })),
-    userNameOrEmail: validateUserNameOrEmail(Object.assign({}, User.validations.userName.propValidation, {
-        required: true
-    }))
-};
-export function validateUserNameOrEmail(propValidation) {
-    function validate(context) {
-        if (context.data && context.data.indexOf('@') >= 0)
-            context = validateEmail(propValidation).validate(context);
-        else
-            context = validateString(propValidation).validate(context);
-        return context;
-    }
-    return {
-        validate,
-        propValidation
-    };
-}
+import * as V from 'ptz-validations';
+import R from 'ramda';
+import { getPasswordValidation, userNameValidation } from './createUser';
+/**
+ * Validate UserName or E-mail to login.
+ */
+export const validateUserNameOrEmail = R.curry((opts, propName, obj) => {
+    const propValue = R.prop(propName, obj);
+    return propValue.indexOf('@') >= 0
+        ? V.validateEmail(opts, propName, obj)
+        : userNameValidation(propName, obj);
+});
+/**
+ * Authenticate User Form.
+ */
+export const authUserForm = V.validate({
+    userNameOrEmail: validateUserNameOrEmail({
+        required: true,
+    }),
+    password: getPasswordValidation(true)
+});
 //# sourceMappingURL=AuthUserForm.js.map

@@ -6,43 +6,49 @@ Object.defineProperty(exports, "__esModule", {
 
 var _AuthUserForm = require('./AuthUserForm');
 
-Object.defineProperty(exports, 'AuthUserForm', {
-  enumerable: true,
-  get: function get() {
-    return _AuthUserForm.AuthUserForm;
-  }
-});
-Object.defineProperty(exports, 'validateUserNameOrEmail', {
-  enumerable: true,
-  get: function get() {
-    return _AuthUserForm.validateUserNameOrEmail;
-  }
+Object.keys(_AuthUserForm).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _AuthUserForm[key];
+    }
+  });
 });
 
 var _allErrors = require('./allErrors');
 
-Object.defineProperty(exports, 'allErrors', {
-  enumerable: true,
-  get: function get() {
-    return _allErrors.allErrors;
-  }
+Object.keys(_allErrors).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _allErrors[key];
+    }
+  });
 });
 
-var _User = require('./User');
+var _createUser = require('./createUser');
 
-Object.defineProperty(exports, 'User', {
-  enumerable: true,
-  get: function get() {
-    return _User.User;
-  }
+Object.keys(_createUser).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _createUser[key];
+    }
+  });
 });
 
 var _users = require('./users');
 
-Object.defineProperty(exports, 'users', {
-  enumerable: true,
-  get: function get() {
-    return _users.users;
-  }
+Object.keys(_users).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _users[key];
+    }
+  });
 });
 //# sourceMappingURL=index.js.map
