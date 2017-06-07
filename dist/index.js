@@ -51,4 +51,16 @@ Object.keys(_users).forEach(function (key) {
     }
   });
 });
+
+var _otherUsersWithSameUserNameOrEmail = require('./otherUsersWithSameUserNameOrEmail');
+
+Object.keys(_otherUsersWithSameUserNameOrEmail).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _otherUsersWithSameUserNameOrEmail[key];
+    }
+  });
+});
 //# sourceMappingURL=index.js.map
