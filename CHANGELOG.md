@@ -1,5 +1,8 @@
 ## master
 
+## 2.0.0 (June 26, 2017)
+
+* Complete rewrite to functional programming
 
 ## 1.8.4 (June 1, 2017)
 
