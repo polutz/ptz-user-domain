@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.otherUsersWithSameUserNameOrEmail = undefined;
 
-var _ptzValidations = require('ptz-validations');
+var _ptzValidations = require('@alanmarcell/ptz-validations');
 
 var V = _interopRequireWildcard(_ptzValidations);
 

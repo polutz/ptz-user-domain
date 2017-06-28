@@ -1,4 +1,4 @@
-import * as V from 'ptz-validations';
+import * as V from '@alanmarcell/ptz-validations';
 import allErrors from './allErrors';
 /**
  * Add error to user.errors when there is other users with same userName or email.

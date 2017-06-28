@@ -5,7 +5,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.authUserForm = exports.validateUserNameOrEmail = undefined;
 
-var _ptzValidations = require('ptz-validations');
+var _ptzValidations = require('@alanmarcell/ptz-validations');
 
 var V = _interopRequireWildcard(_ptzValidations);
 
@@ -22,17 +22,19 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 /**
  * Validate UserName or E-mail to login.
  */
-var validateUserNameOrEmail = exports.validateUserNameOrEmail = _ramda2.default.curry(function (opts, propName, obj) {
+var validateUserNameOrEmail = exports.validateUserNameOrEmail = _ramda2.default.curry(function (propName, obj) {
     var propValue = _ramda2.default.prop(propName, obj);
-    return propValue.indexOf('@') >= 0 ? V.validateEmail(opts, propName, obj) : (0, _createUser.userNameValidation)(propName, obj);
+    var createUserValidation = { userNameOrEmail: _createUser.userNameValidation };
+    return propValue.indexOf('@') >= 0 ? V.isEmail(propName, obj) : V.validate(createUserValidation)(obj);
 });
 /**
  * Authenticate User Form.
  */
 var authUserForm = exports.authUserForm = V.validate({
-    userNameOrEmail: validateUserNameOrEmail({
-        required: true
-    }),
+    userNameOrEmail: [validateUserNameOrEmail],
+    //     userNameOrEmail: validateUserNameOrEmail({
+    //     required: true,
+    // }),
     password: (0, _createUser.getPasswordValidation)(true)
 });
 //# sourceMappingURL=AuthUserForm.js.map

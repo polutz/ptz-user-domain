@@ -1,16 +1,16 @@
 'use strict';
 
+var _ptzValidations = require('@alanmarcell/ptz-validations');
+
+var V = _interopRequireWildcard(_ptzValidations);
+
 var _ptzAssert = require('ptz-assert');
 
 var assert = _interopRequireWildcard(_ptzAssert);
 
-var _ptzValidations = require('ptz-validations');
+var _createUser = require('./createUser');
 
-var V = _interopRequireWildcard(_ptzValidations);
-
-var _index = require('./index');
-
-var User = _interopRequireWildcard(_index);
+var User = _interopRequireWildcard(_createUser);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -37,7 +37,7 @@ describe('createUser', function () {
         it('Add error when minLength userName', function () {
             var user = User.createUser({ userName: 'a', email: '', displayName: '' });
             assert.containsFind(user.errors, function (e) {
-                return e.propName === 'userName' && e.errorMsg === V.allErrors.MIN_LENGTH;
+                return e.propName === 'userName' && e.errorMsg === V.allErrors.MIN;
             });
         });
         it('Add error when maxLength userName', function () {
@@ -46,7 +46,7 @@ describe('createUser', function () {
                 email: '', displayName: ''
             });
             assert.containsFind(user.errors, function (e) {
-                return e.propName === 'userName' && e.errorMsg === V.allErrors.MAX_LENGTH;
+                return e.propName === 'userName' && e.errorMsg === V.allErrors.MAX;
             });
         });
         it('Should be lowercase', function () {

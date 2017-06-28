@@ -1,28 +1,54 @@
-import * as V from 'ptz-validations';
-export const userNameValidation = V.validateString({
-    required: true,
-    minLength: 3,
-    maxLength: 30,
-    toLowerCase: true
-});
-export const getPasswordValidation = (required) => V.validateString({
-    required,
-    minLength: 6,
-    maxLength: 30
-});
+import * as V from '@alanmarcell/ptz-validations';
+export const getPasswordValidation = (required) => {
+    if (required)
+        return [
+            V.required,
+            V.isString,
+            V.min(6),
+            V.max(40)
+        ];
+    return [
+        V.isString,
+        V.min(6),
+        V.max(40)
+    ];
+};
+export const userNameValidation = [
+    V.required,
+    V.isString,
+    V.min(2),
+    V.max(40),
+    V.toLowerCase
+];
+const createUserValidation = {
+    id: [
+        V.generateId
+    ],
+    displayName: [
+        V.required,
+        V.isString,
+        V.min(2),
+        V.max(100)
+    ],
+    userName: userNameValidation,
+    password: getPasswordValidation(false),
+    email: [
+        V.required,
+        V.isEmail
+    ],
+    weight: [
+        V.isNumber,
+        V.min(1),
+        V.max(1000)
+    ],
+    birthday: [
+        V.isDate,
+        V.min(new Date('1800-01-01')),
+        V.max(new Date())
+    ]
+};
 /**
  * Create user
  */
-export const createUser = V.validate({
-    displayName: V.validateString({
-        required: true,
-        minLength: 2,
-        maxLength: 50
-    }),
-    userName: userNameValidation,
-    password: getPasswordValidation(false),
-    email: V.validateEmail({
-        required: true
-    })
-});
+export const createUser = V.validate(createUserValidation);
 //# sourceMappingURL=createUser.js.map

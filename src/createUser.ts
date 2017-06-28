@@ -34,7 +34,7 @@ const createUserValidation: V.IValidations = {
         V.max(100)
     ],
     userName: userNameValidation,
-    password: getPasswordValidation(true),
+    password: getPasswordValidation(false),
     email: [
         V.required,
         V.isEmail

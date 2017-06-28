@@ -1,6 +1,5 @@
 import { allErrors as allValidationErrors } from '@alanmarcell/ptz-validations';
 import { containsFind, equal, notContainsFind } from 'ptz-assert';
-import log from 'ptz-log';
 import { authUserForm } from './index';
 
 describe('AuthUserForm', () => {
@@ -52,14 +51,14 @@ describe('AuthUserForm', () => {
     describe('Password', () => {
         it('Add error when null password', () => {
             const user = authUserForm({ userNameOrEmail: 'angeloocana', password: null });
-            log('user.errors', user.errors);
+
             containsFind(user.errors, e => e.propName === 'password'
                 && e.errorMsg === allValidationErrors.REQUIRED);
         });
 
         it('Add error when empty password', () => {
             const user = authUserForm({ userNameOrEmail: 'angeloocana', password: '' });
-            log('user.errors', user.errors);
+
             containsFind(user.errors, e => e.propName === 'password'
                 && e.errorMsg === allValidationErrors.REQUIRED);
         });
