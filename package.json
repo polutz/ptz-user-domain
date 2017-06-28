@@ -1,5 +1,5 @@
 {
-  "name": "@polutz/ptz-user-domain",
+  "name": "@alanmarcell/ptz-user-domain",
   "version": "0.0.0",
   "description": "Polutz User Domain.",
   "main": "dist/index.js",
