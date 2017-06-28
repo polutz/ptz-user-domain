@@ -1,23 +1,29 @@
 import * as V from '@alanmarcell/ptz-validations';
 import { IUser } from './IUser';
 
-// export const userNameValidation = V.validateString({
-//     required: true,
-//     minLength: 3,
-//     maxLength: 30,
-//     toLowerCase: true
-// });
+export const getPasswordValidation = (required: boolean): [V.IValidateProp] => {
+    if (required) return [
+        V.required,
+        V.isString,
+        V.min(6),
+        V.max(40)
+    ];
+    return [
+        V.isString,
+        V.min(6),
+        V.max(40)
+    ];
+};
 
-// export const getPasswordValidation = (required: boolean) => V.validateString({
-//     required,
-//     minLength: 6,
-//     maxLength: 30
-// });
+export const userNameValidation: [V.IValidateProp] = [
+    V.required,
+    V.isString,
+    V.min(2),
+    V.max(40),
+    V.toLowerCase
+];
 
-/**
- * Create user
- */
-export const createUser = V.validate<IUser>({
+const createUserValidation: V.IValidations = {
     id: [
         V.generateId
     ],
@@ -27,19 +33,8 @@ export const createUser = V.validate<IUser>({
         V.min(2),
         V.max(100)
     ],
-    userName: [
-        V.required,
-        V.isString,
-        V.min(2),
-        V.max(40),
-        V.toLowerCase
-    ],
-    password: [
-        V.required,
-        V.isString,
-        V.min(6),
-        V.max(40)
-    ],
+    userName: userNameValidation,
+    password: getPasswordValidation(true),
     email: [
         V.required,
         V.isEmail
@@ -54,4 +49,8 @@ export const createUser = V.validate<IUser>({
         V.min(new Date('1800-01-01')),
         V.max(new Date())
     ]
-});
+};
+/**
+ * Create user
+ */
+export const createUser = V.validate<IUser>(createUserValidation);
