@@ -1,4 +1,4 @@
-import { IHaveValidation, IHaveValidationArgs } from 'ptz-validations';
+import { IHaveValidation, IHaveValidationArgs } from '@alanmarcell/ptz-validations';
 
 export interface IAuthUserForm extends IHaveValidation {
     userNameOrEmail: string;

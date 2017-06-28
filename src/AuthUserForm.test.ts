@@ -1,12 +1,13 @@
+import { allErrors as allValidationErrors } from '@alanmarcell/ptz-validations';
 import { containsFind, equal, notContainsFind } from 'ptz-assert';
 import log from 'ptz-log';
-import { allErrors as allValidationErrors } from 'ptz-validations';
 import { authUserForm } from './index';
 
 describe('AuthUserForm', () => {
     describe('userNameOrEmail', () => {
         it('Add error when empty userNameOrEmail', () => {
             const user = authUserForm({ userNameOrEmail: '', password: '' });
+
             containsFind(user.errors, e => e.propName === 'userNameOrEmail'
                 && e.errorMsg === allValidationErrors.REQUIRED);
         });
@@ -72,7 +73,7 @@ describe('AuthUserForm', () => {
         it('Add error when minlength password', () => {
             const user = authUserForm({ userNameOrEmail: 'angeloocana', password: 'a' });
             containsFind(user.errors, e => e.propName === 'password'
-                && e.errorMsg === allValidationErrors.MIN_LENGTH);
+                && e.errorMsg === allValidationErrors.MIN);
         });
 
         it('Add error when maxlength password', () => {
@@ -81,7 +82,7 @@ describe('AuthUserForm', () => {
                 password: 'labalblhblhbohblabcascjbascijbascjbasclasbclasbash'
             });
             containsFind(user.errors, e => e.propName === 'password'
-                && e.errorMsg === allValidationErrors.MAX_LENGTH);
+                && e.errorMsg === allValidationErrors.MAX);
         });
     });
 });

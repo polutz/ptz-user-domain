@@ -1,4 +1,4 @@
-import * as V from 'ptz-validations';
+import * as V from '@alanmarcell/ptz-validations';
 import R from 'ramda';
 import { getPasswordValidation, userNameValidation } from './createUser';
 import { IAuthUserForm } from './IAuthUserForm';
@@ -6,20 +6,24 @@ import { IAuthUserForm } from './IAuthUserForm';
 /**
  * Validate UserName or E-mail to login.
  */
-export const validateUserNameOrEmail = R.curry((opts: V.IStringValidation, propName, obj) => {
+export const validateUserNameOrEmail = R.curry((propName: string, obj: any) => {
+
     const propValue = R.prop<string>(propName, obj);
 
+    const createUserValidation: V.IValidations = { userNameOrEmail: userNameValidation };
+
     return propValue.indexOf('@') >= 0
-        ? V.validateEmail(opts, propName, obj)
-        : userNameValidation(propName, obj);
+        ? V.isEmail(propName, obj)
+        : V.validate(createUserValidation)(obj);
 });
 
 /**
  * Authenticate User Form.
  */
 export const authUserForm = V.validate<IAuthUserForm>({
-    userNameOrEmail: validateUserNameOrEmail({
-        required: true,
-    }),
+    userNameOrEmail: [validateUserNameOrEmail],
+    //     userNameOrEmail: validateUserNameOrEmail({
+    //     required: true,
+    // }),
     password: getPasswordValidation(true)
 });
