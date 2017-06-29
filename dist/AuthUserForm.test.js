@@ -21,6 +21,12 @@ describe('AuthUserForm', function () {
                     return e.propName === 'userNameOrEmail' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
                 });
             });
+            it('Add error when invalid MIN username', function () {
+                var user = (0, _index.authUserForm)({ userNameOrEmail: 'ln', password: '' });
+                (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                    return e.propName === 'userNameOrEmail' && e.errorMsg === _ptzValidations.allErrors.MIN;
+                });
+            });
             it('Should be lowercase', function () {
                 var user = (0, _index.authUserForm)({ userNameOrEmail: 'AnGeLoOcAnA', password: '' });
                 (0, _ptzAssert.equal)(user.userNameOrEmail, 'angeloocana');

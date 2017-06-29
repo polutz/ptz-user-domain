@@ -16,7 +16,7 @@ export const getPasswordValidation = (required) => {
 export const userNameValidation = [
     V.required,
     V.isString,
-    V.min(2),
+    V.min(4),
     V.max(40),
     V.toLowerCase
 ];
@@ -27,7 +27,7 @@ const createUserValidation = {
     displayName: [
         V.required,
         V.isString,
-        V.min(2),
+        V.min(4),
         V.max(100)
     ],
     userName: userNameValidation,

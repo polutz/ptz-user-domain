@@ -52,6 +52,18 @@ Object.keys(_users).forEach(function (key) {
   });
 });
 
+var _updateUser = require('./updateUser');
+
+Object.keys(_updateUser).forEach(function (key) {
+  if (key === "default" || key === "__esModule") return;
+  Object.defineProperty(exports, key, {
+    enumerable: true,
+    get: function get() {
+      return _updateUser[key];
+    }
+  });
+});
+
 var _otherUsersWithSameUserNameOrEmail = require('./otherUsersWithSameUserNameOrEmail');
 
 Object.keys(_otherUsersWithSameUserNameOrEmail).forEach(function (key) {

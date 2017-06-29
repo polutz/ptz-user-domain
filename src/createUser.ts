@@ -18,7 +18,7 @@ export const getPasswordValidation = (required: boolean): [V.IValidateProp] => {
 export const userNameValidation: [V.IValidateProp] = [
     V.required,
     V.isString,
-    V.min(2),
+    V.min(4),
     V.max(40),
     V.toLowerCase
 ];
@@ -30,7 +30,7 @@ const createUserValidation: V.IValidations = {
     displayName: [
         V.required,
         V.isString,
-        V.min(2),
+        V.min(4),
         V.max(100)
     ],
     userName: userNameValidation,

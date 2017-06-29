@@ -15,10 +15,10 @@ var getPasswordValidation = exports.getPasswordValidation = function getPassword
     if (required) return [V.required, V.isString, V.min(6), V.max(40)];
     return [V.isString, V.min(6), V.max(40)];
 };
-var userNameValidation = exports.userNameValidation = [V.required, V.isString, V.min(2), V.max(40), V.toLowerCase];
+var userNameValidation = exports.userNameValidation = [V.required, V.isString, V.min(4), V.max(40), V.toLowerCase];
 var createUserValidation = {
     id: [V.generateId],
-    displayName: [V.required, V.isString, V.min(2), V.max(100)],
+    displayName: [V.required, V.isString, V.min(4), V.max(100)],
     userName: userNameValidation,
     password: getPasswordValidation(false),
     email: [V.required, V.isEmail],

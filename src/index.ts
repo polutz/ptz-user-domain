@@ -8,4 +8,5 @@ export * from './IUserApp';
 export * from './IUserRepository';
 export * from './createUser';
 export * from './users';
+export * from './updateUser';
 export * from './otherUsersWithSameUserNameOrEmail';

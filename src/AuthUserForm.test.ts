@@ -18,6 +18,12 @@ describe('AuthUserForm', () => {
                     && e.errorMsg === allValidationErrors.REQUIRED);
             });
 
+            it('Add error when invalid MIN username', () => {
+                const user = authUserForm({ userNameOrEmail: 'ln', password: '' });
+                containsFind(user.errors, e => e.propName === 'userNameOrEmail'
+                    && e.errorMsg === allValidationErrors.MIN);
+            });
+
             it('Should be lowercase', () => {
                 const user = authUserForm({ userNameOrEmail: 'AnGeLoOcAnA', password: '' });
                 equal(user.userNameOrEmail, 'angeloocana');
