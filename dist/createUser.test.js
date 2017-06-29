@@ -81,6 +81,15 @@ describe('createUser', function () {
             assert.equal(user.email, 'angeloocana@gmail.com');
         });
     });
+    describe('User Functions', function () {
+        var user = User.createUser({ userName: '', email: '', displayName: '' });
+        it('otherUsersWithSameUserNameOrEmail', function () {
+            assert.ok(user.otherUsersWithSameUserNameOrEmail);
+        });
+        it('update', function () {
+            assert.ok(user.update);
+        });
+    });
     it('throw error when null args', function () {
         assert.throws(function () {
             return User.createUser(null);

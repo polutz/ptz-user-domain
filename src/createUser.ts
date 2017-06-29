@@ -1,5 +1,11 @@
 import * as V from '@alanmarcell/ptz-validations';
-import { IUser } from './IUser';
+import R from 'ramda';
+import {
+    IUser,
+    IUserArgs
+} from './IUser';
+import { otherUsersWithSameUserNameOrEmail } from './otherUsersWithSameUserNameOrEmail';
+import { updateUser as update } from './updateUser';
 
 export const getPasswordValidation = (required: boolean): [V.IValidateProp] => {
     if (required) return [
@@ -50,7 +56,15 @@ const createUserValidation: V.IValidations = {
         V.max(new Date())
     ]
 };
+export const validateUser = V.validate<IUserArgs>(createUserValidation);
+
+const addUserFunctions = (validUserArgs: IUserArgs & V.IHaveValidation): IUser =>
+    R.merge({
+        update,
+        otherUsersWithSameUserNameOrEmail
+    }, validUserArgs);
+
 /**
  * Create user
  */
-export const createUser = V.validate<IUser>(createUserValidation);
+export const createUser = R.compose(addUserFunctions, validateUser);

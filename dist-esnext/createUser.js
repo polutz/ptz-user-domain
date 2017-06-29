@@ -1,4 +1,7 @@
 import * as V from '@alanmarcell/ptz-validations';
+import R from 'ramda';
+import { otherUsersWithSameUserNameOrEmail } from './otherUsersWithSameUserNameOrEmail';
+import { updateUser as update } from './updateUser';
 export const getPasswordValidation = (required) => {
     if (required)
         return [
@@ -47,8 +50,13 @@ const createUserValidation = {
         V.max(new Date())
     ]
 };
+export const validateUser = V.validate(createUserValidation);
+const addUserFunctions = (validUserArgs) => R.merge({
+    update,
+    otherUsersWithSameUserNameOrEmail
+}, validUserArgs);
 /**
  * Create user
  */
-export const createUser = V.validate(createUserValidation);
+export const createUser = R.compose(addUserFunctions, validateUser);
 //# sourceMappingURL=createUser.js.map
