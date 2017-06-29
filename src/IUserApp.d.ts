@@ -62,7 +62,7 @@ export interface IUserApp {
     deleteUser(args: IDeleteUserArgs): Promise<boolean>;
 
     hashPassword(user: IUser): Promise<IUser>;
-    seed();
+    seed(repository: IUserRepository): void;
 }
 
 export interface IUserAppArgs {
