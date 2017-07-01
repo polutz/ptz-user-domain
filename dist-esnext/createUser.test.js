@@ -1,6 +1,6 @@
+import * as V from '@alanmarcell/ptz-validations';
 import * as assert from 'ptz-assert';
-import * as V from 'ptz-validations';
-import * as User from './index';
+import * as User from './createUser';
 describe('createUser', () => {
     describe('UserName', () => {
         it('Add error when null username', () => {
@@ -21,7 +21,7 @@ describe('createUser', () => {
         it('Add error when minLength userName', () => {
             const user = User.createUser({ userName: 'a', email: '', displayName: '' });
             assert.containsFind(user.errors, e => e.propName === 'userName'
-                && e.errorMsg === V.allErrors.MIN_LENGTH);
+                && e.errorMsg === V.allErrors.MIN);
         });
         it('Add error when maxLength userName', () => {
             const user = User.createUser({
@@ -29,7 +29,7 @@ describe('createUser', () => {
                 email: '', displayName: ''
             });
             assert.containsFind(user.errors, e => e.propName === 'userName'
-                && e.errorMsg === V.allErrors.MAX_LENGTH);
+                && e.errorMsg === V.allErrors.MAX);
         });
         it('Should be lowercase', () => {
             const user = User.createUser({ userName: 'AnGeLoOcAnA', email: '', displayName: '' });
@@ -57,6 +57,15 @@ describe('createUser', () => {
         it('Should be lowercase', () => {
             const user = User.createUser({ userName: 'AnGeLoOcAnA', email: 'AnGeLoOcAnA@gMaIl.CoM', displayName: '' });
             assert.equal(user.email, 'angeloocana@gmail.com');
+        });
+    });
+    describe('User Functions', () => {
+        const user = User.createUser({ userName: '', email: '', displayName: '' });
+        it('otherUsersWithSameUserNameOrEmail', () => {
+            assert.ok(user.otherUsersWithSameUserNameOrEmail);
+        });
+        it('update', () => {
+            assert.ok(user.update);
         });
     });
     it('throw error when null args', () => {

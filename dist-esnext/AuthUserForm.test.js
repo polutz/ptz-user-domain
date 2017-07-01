@@ -1,6 +1,5 @@
+import { allErrors as allValidationErrors } from '@alanmarcell/ptz-validations';
 import { containsFind, equal, notContainsFind } from 'ptz-assert';
-import log from 'ptz-log';
-import { allErrors as allValidationErrors } from 'ptz-validations';
 import { authUserForm } from './index';
 describe('AuthUserForm', () => {
     describe('userNameOrEmail', () => {
@@ -14,6 +13,11 @@ describe('AuthUserForm', () => {
                 const user = authUserForm({ userNameOrEmail: 'angeloocana', password: '' });
                 notContainsFind(user.errors, e => e.propName === 'userNameOrEmail'
                     && e.errorMsg === allValidationErrors.REQUIRED);
+            });
+            it('Add error when invalid MIN username', () => {
+                const user = authUserForm({ userNameOrEmail: 'ln', password: '' });
+                containsFind(user.errors, e => e.propName === 'userNameOrEmail'
+                    && e.errorMsg === allValidationErrors.MIN);
             });
             it('Should be lowercase', () => {
                 const user = authUserForm({ userNameOrEmail: 'AnGeLoOcAnA', password: '' });
@@ -42,13 +46,11 @@ describe('AuthUserForm', () => {
     describe('Password', () => {
         it('Add error when null password', () => {
             const user = authUserForm({ userNameOrEmail: 'angeloocana', password: null });
-            log('user.errors', user.errors);
             containsFind(user.errors, e => e.propName === 'password'
                 && e.errorMsg === allValidationErrors.REQUIRED);
         });
         it('Add error when empty password', () => {
             const user = authUserForm({ userNameOrEmail: 'angeloocana', password: '' });
-            log('user.errors', user.errors);
             containsFind(user.errors, e => e.propName === 'password'
                 && e.errorMsg === allValidationErrors.REQUIRED);
         });
@@ -60,7 +62,7 @@ describe('AuthUserForm', () => {
         it('Add error when minlength password', () => {
             const user = authUserForm({ userNameOrEmail: 'angeloocana', password: 'a' });
             containsFind(user.errors, e => e.propName === 'password'
-                && e.errorMsg === allValidationErrors.MIN_LENGTH);
+                && e.errorMsg === allValidationErrors.MIN);
         });
         it('Add error when maxlength password', () => {
             const user = authUserForm({
@@ -68,7 +70,7 @@ describe('AuthUserForm', () => {
                 password: 'labalblhblhbohblabcascjbascijbascjbasclasbclasbash'
             });
             containsFind(user.errors, e => e.propName === 'password'
-                && e.errorMsg === allValidationErrors.MAX_LENGTH);
+                && e.errorMsg === allValidationErrors.MAX);
         });
     });
 });

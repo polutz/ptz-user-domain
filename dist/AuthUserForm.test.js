@@ -1,16 +1,10 @@
 'use strict';
 
+var _ptzValidations = require('@alanmarcell/ptz-validations');
+
 var _ptzAssert = require('ptz-assert');
 
-var _ptzLog = require('ptz-log');
-
-var _ptzLog2 = _interopRequireDefault(_ptzLog);
-
-var _ptzValidations = require('ptz-validations');
-
 var _index = require('./index');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 describe('AuthUserForm', function () {
     describe('userNameOrEmail', function () {
@@ -25,6 +19,12 @@ describe('AuthUserForm', function () {
                 var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana', password: '' });
                 (0, _ptzAssert.notContainsFind)(user.errors, function (e) {
                     return e.propName === 'userNameOrEmail' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
+                });
+            });
+            it('Add error when invalid MIN username', function () {
+                var user = (0, _index.authUserForm)({ userNameOrEmail: 'ln', password: '' });
+                (0, _ptzAssert.containsFind)(user.errors, function (e) {
+                    return e.propName === 'userNameOrEmail' && e.errorMsg === _ptzValidations.allErrors.MIN;
                 });
             });
             it('Should be lowercase', function () {
@@ -57,14 +57,12 @@ describe('AuthUserForm', function () {
     describe('Password', function () {
         it('Add error when null password', function () {
             var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana', password: null });
-            (0, _ptzLog2.default)('user.errors', user.errors);
             (0, _ptzAssert.containsFind)(user.errors, function (e) {
                 return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
             });
         });
         it('Add error when empty password', function () {
             var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana', password: '' });
-            (0, _ptzLog2.default)('user.errors', user.errors);
             (0, _ptzAssert.containsFind)(user.errors, function (e) {
                 return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.REQUIRED;
             });
@@ -78,7 +76,7 @@ describe('AuthUserForm', function () {
         it('Add error when minlength password', function () {
             var user = (0, _index.authUserForm)({ userNameOrEmail: 'angeloocana', password: 'a' });
             (0, _ptzAssert.containsFind)(user.errors, function (e) {
-                return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.MIN_LENGTH;
+                return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.MIN;
             });
         });
         it('Add error when maxlength password', function () {
@@ -87,7 +85,7 @@ describe('AuthUserForm', function () {
                 password: 'labalblhblhbohblabcascjbascijbascjbasclasbclasbash'
             });
             (0, _ptzAssert.containsFind)(user.errors, function (e) {
-                return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.MAX_LENGTH;
+                return e.propName === 'password' && e.errorMsg === _ptzValidations.allErrors.MAX;
             });
         });
     });

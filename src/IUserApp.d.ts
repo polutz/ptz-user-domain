@@ -1,6 +1,6 @@
-import { ICreatedBy } from 'ptz-core-domain';
+import { ICreatedBy } from '@alanmarcell/ptz-core-domain';
+import { IError } from '@alanmarcell/ptz-validations';
 import { ILog } from 'ptz-log';
-import { IError } from 'ptz-validations';
 import { IAppFuncArgs } from './IAppFuncArgs';
 import { IAuthUserFormArgs } from './IAuthUserForm';
 import { IUser, IUserArgs } from './IUser';
@@ -62,7 +62,7 @@ export interface IUserApp {
     deleteUser(args: IDeleteUserArgs): Promise<boolean>;
 
     hashPassword(user: IUser): Promise<IUser>;
-    seed();
+    seed(repository: IUserRepository): void;
 }
 
 export interface IUserAppArgs {
