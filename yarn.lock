@@ -2,43 +2,6 @@
 # yarn lockfile v1
 
 
-"@alanmarcell/ptz-core-domain@^0.0.1":
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-core-domain/-/ptz-core-domain-0.0.1.tgz#41d93601653061f6426ee8b9e035fc30d25ad0cc"
-  dependencies:
-    "@alanmarcell/ptz-validations" "0.0.0"
-    "@types/mongodb" "^2.2.6"
-    ptz-fp "^1.1.0"
-    ptz-log "^1.1.0"
-    ramda "^0.24.0"
-    shortid "^2.2.6"
-
-"@alanmarcell/ptz-user-domain@^0.0.4":
-  version "0.0.4"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-user-domain/-/ptz-user-domain-0.0.4.tgz#38255d1e47659365c2be1c464e7efd75ed26b792"
-  dependencies:
-    "@alanmarcell/ptz-core-domain" "^0.0.1"
-    "@alanmarcell/ptz-validations" "^0.0.2"
-    ptz-log "^1.1.0"
-
-"@alanmarcell/ptz-validations@0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-validations/-/ptz-validations-0.0.0.tgz#378a9d87317ca86115557d3a73cfcff8cd0cd9f4"
-  dependencies:
-    ptz-fp "^1.0.1"
-    ptz-log "^1.1.0"
-    ramda "^0.24.1"
-    shortid "^2.2.8"
-
-"@alanmarcell/ptz-validations@^0.0.2":
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/@alanmarcell/ptz-validations/-/ptz-validations-0.0.2.tgz#6514c94157b049fcb912756b7dd699f67283ab5c"
-  dependencies:
-    ptz-fp "^1.0.1"
-    ptz-log "^1.1.0"
-    ramda "^0.24.1"
-    shortid "^2.2.8"
-
 "@types/bson@*":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@types/bson/-/bson-1.0.3.tgz#6c26f0876bf9d8cbb06edd4019e29354bf3a03e0"
@@ -71,7 +34,7 @@
   version "2.0.29"
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-2.0.29.tgz#5002e14f75e2d71e564281df0431c8c1b4a2a36a"
 
-"@types/mocha@^2.2.40":
+"@types/mocha@^2.2.41":
   version "2.2.41"
   resolved "https://registry.yarnpkg.com/@types/mocha/-/mocha-2.2.41.tgz#e27cf0817153eb9f2713b2d3f6c68f1e1c3ca608"
 
@@ -82,9 +45,9 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^7.0.12":
-  version "7.0.14"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-7.0.14.tgz#1470fa002a113316ac9d9ad163fc738c7a0de2a4"
+"@types/node@*", "@types/node@^8.0.6", "@types/node@^8.0.7":
+  version "8.0.7"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.7.tgz#fb0ad04b5b6f6eabe0372a32a8f1fbba5c130cae"
 
 "@types/ramda@0.0.10":
   version "0.0.10"
@@ -95,6 +58,10 @@
   resolved "https://registry.yarnpkg.com/@types/shelljs/-/shelljs-0.7.2.tgz#c2bdb3fe80cd7a3da08750ca898ae44c589671f3"
   dependencies:
     "@types/node" "*"
+
+"@types/shortid@0.0.28":
+  version "0.0.28"
+  resolved "https://registry.yarnpkg.com/@types/shortid/-/shortid-0.0.28.tgz#b359e25348351f6bf736eed20d2e666528c248c6"
 
 abbrev@1, abbrev@1.0.x:
   version "1.0.9"
@@ -697,11 +664,11 @@ babel-types@^6.18.0, babel-types@^6.19.0, babel-types@^6.24.1:
     lodash "^4.2.0"
     to-fast-properties "^1.0.1"
 
-babylon@^6.11.0:
+babylon@^6.11.0, babylon@^6.15.0:
   version "6.17.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.0.tgz#37da948878488b9c4e3c4038893fa3314b3fc932"
 
-babylon@^6.15.0, babylon@^6.17.4:
+babylon@^6.17.4:
   version "6.17.4"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.4.tgz#3e8b7402b88d22c3423e137a1577883b15ff869a"
 
@@ -938,13 +905,13 @@ debug-log@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/debug-log/-/debug-log-1.0.1.tgz#2307632d4c04382b8df8a32f70b895046d52745f"
 
-debug@2.6.0, debug@^2.1.1:
+debug@2.6.0, debug@^2.1.1, debug@^2.2.0:
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.0.tgz#bc596bcabe7617f11d9fa15361eded5608b8499b"
   dependencies:
     ms "0.7.2"
 
-debug@^2.2.0, debug@^2.6.3:
+debug@^2.6.3:
   version "2.6.8"
   resolved "https://registry.yarnpkg.com/debug/-/debug-2.6.8.tgz#e731531ca2ede27d188222427da17821d68ff4fc"
   dependencies:
@@ -2091,7 +2058,7 @@ number-is-nan@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
 
-nyc@^11.0.2:
+nyc@^11.0.3:
   version "11.0.3"
   resolved "https://registry.yarnpkg.com/nyc/-/nyc-11.0.3.tgz#0c28bc669a851621709bf7a08503034bee3812b6"
   dependencies:
@@ -2345,12 +2312,26 @@ pseudomap@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/pseudomap/-/pseudomap-1.0.2.tgz#f052a28da70e618917ef0a8ac34c1ae5a68286b3"
 
-ptz-assert@^1.6.3:
+ptz-assert@^1.6.8:
   version "1.6.8"
   resolved "https://registry.yarnpkg.com/ptz-assert/-/ptz-assert-1.6.8.tgz#7c19e98fc752b94dc2f98b7c33328d788e31ca96"
   dependencies:
     assert "^1.4.1"
     ptz-log "^1.0.0"
+
+ptz-core-domain@^2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/ptz-core-domain/-/ptz-core-domain-2.0.4.tgz#e97497277e009aa3573b3054af3657c3d0b21d08"
+  dependencies:
+    "@types/mongodb" "^2.2.6"
+    "@types/node" "^8.0.6"
+    "@types/ramda" "0.0.10"
+    "@types/shortid" "0.0.28"
+    ptz-fp "^1.1.0"
+    ptz-log "^1.1.0"
+    ptz-validations "3.0.1"
+    ramda "^0.24.0"
+    shortid "^2.2.6"
 
 ptz-fp@^1.0.1, ptz-fp@^1.1.0:
   version "1.1.0"
@@ -2365,6 +2346,15 @@ ptz-log@^1.0.0, ptz-log@^1.1.0:
   resolved "https://registry.yarnpkg.com/ptz-log/-/ptz-log-1.1.0.tgz#a5f81680da30e491e49c6a6022ec4972506d473b"
   dependencies:
     moment "^2.18.1"
+
+ptz-validations@3.0.1, ptz-validations@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/ptz-validations/-/ptz-validations-3.0.1.tgz#2dde5ee3669b41baf3704fc952d1d7fb5b427218"
+  dependencies:
+    ptz-fp "^1.0.1"
+    ptz-log "^1.1.0"
+    ramda "^0.24.1"
+    shortid "^2.2.8"
 
 punycode@^1.4.1:
   version "1.4.1"
@@ -2662,7 +2652,7 @@ signal-exit@^3.0.0, signal-exit@^3.0.1, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
 
-sinon@^2.3.5:
+sinon@^2.3.6:
   version "2.3.6"
   resolved "https://registry.yarnpkg.com/sinon/-/sinon-2.3.6.tgz#95378e7e0f976a9712e9b4591ff5b39e73dc3dde"
   dependencies:
@@ -2997,7 +2987,7 @@ typescript@2.3.2:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.3.2.tgz#f0f045e196f69a72f06b25fd3bd39d01c3ce9984"
 
-typescript@^2.3.4:
+typescript@^2.4.1:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-2.4.1.tgz#c3ccb16ddaa0b2314de031e7e6fee89e5ba346bc"
 

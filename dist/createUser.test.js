@@ -1,12 +1,12 @@
 'use strict';
 
-var _ptzValidations = require('@alanmarcell/ptz-validations');
-
-var V = _interopRequireWildcard(_ptzValidations);
-
 var _ptzAssert = require('ptz-assert');
 
 var assert = _interopRequireWildcard(_ptzAssert);
+
+var _ptzValidations = require('ptz-validations');
+
+var V = _interopRequireWildcard(_ptzValidations);
 
 var _createUser = require('./createUser');
 
@@ -79,15 +79,6 @@ describe('createUser', function () {
         it('Should be lowercase', function () {
             var user = User.createUser({ userName: 'AnGeLoOcAnA', email: 'AnGeLoOcAnA@gMaIl.CoM', displayName: '' });
             assert.equal(user.email, 'angeloocana@gmail.com');
-        });
-    });
-    describe('User Functions', function () {
-        var user = User.createUser({ userName: '', email: '', displayName: '' });
-        it('otherUsersWithSameUserNameOrEmail', function () {
-            assert.ok(user.otherUsersWithSameUserNameOrEmail);
-        });
-        it('update', function () {
-            assert.ok(user.update);
         });
     });
     it('throw error when null args', function () {

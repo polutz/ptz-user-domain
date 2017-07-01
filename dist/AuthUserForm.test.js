@@ -1,8 +1,8 @@
 'use strict';
 
-var _ptzValidations = require('@alanmarcell/ptz-validations');
-
 var _ptzAssert = require('ptz-assert');
+
+var _ptzValidations = require('ptz-validations');
 
 var _index = require('./index');
 
