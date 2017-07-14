@@ -1,5 +1,5 @@
-import * as V from '@alanmarcell/ptz-validations';
 import * as assert from 'ptz-assert';
+import * as V from 'ptz-validations';
 import * as User from './createUser';
 
 describe('createUser', () => {
@@ -71,17 +71,6 @@ describe('createUser', () => {
             assert.equal(user.email, 'angeloocana@gmail.com');
         });
 
-    });
-
-    describe('User Functions', () => {
-        const user = User.createUser({ userName: '', email: '', displayName: '' });
-
-        it('otherUsersWithSameUserNameOrEmail', () => {
-            assert.ok(user.otherUsersWithSameUserNameOrEmail);
-        });
-        it('update', () => {
-            assert.ok(user.update);
-        });
     });
 
     it('throw error when null args', () => {

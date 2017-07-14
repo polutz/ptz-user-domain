@@ -1,4 +1,4 @@
-import { IBaseRepository } from '@alanmarcell/ptz-core-domain';
+import { IBaseRepository } from 'ptz-core-domain';
 import { IUser } from './IUser';
 
 export interface IUserRepository extends IBaseRepository<IUser> {

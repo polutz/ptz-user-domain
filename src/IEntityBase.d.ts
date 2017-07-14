@@ -1,4 +1,4 @@
-import { IEntityBase, IEntityBaseArgs } from '@alanmarcell/ptz-core-domain';
+import { IEntityBase, IEntityBaseArgs } from 'ptz-core-domain';
 import { IUserForLog } from './IUser';
 
 export type IEntityBase = IEntityBase<IUserForLog>;

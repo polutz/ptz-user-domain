@@ -9,13 +9,6 @@ export interface IUser extends IEntityBase {
     password?: string;
     passwordHash?: string;
     accessToken?: string;
-
-    update(oldUser: IUser, { userName,
-        email,
-        displayName,
-        passwordHash,
-        imgUrl }: IUser): IUser;
-    otherUsersWithSameUserNameOrEmail(user: IUser, otherUsers: IUserArgs[]): IUser;
 }
 
 export interface IUserArgs extends IEntityBaseArgs {

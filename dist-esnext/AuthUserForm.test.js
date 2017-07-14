@@ -1,5 +1,5 @@
-import { allErrors as allValidationErrors } from '@alanmarcell/ptz-validations';
 import { containsFind, equal, notContainsFind } from 'ptz-assert';
+import { allErrors as allValidationErrors } from 'ptz-validations';
 import { authUserForm } from './index';
 describe('AuthUserForm', () => {
     describe('userNameOrEmail', () => {

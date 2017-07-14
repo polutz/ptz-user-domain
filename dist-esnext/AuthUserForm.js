@@ -1,4 +1,4 @@
-import * as V from '@alanmarcell/ptz-validations';
+import * as V from 'ptz-validations';
 import R from 'ramda';
 import { getPasswordValidation, userNameValidation } from './createUser';
 /**

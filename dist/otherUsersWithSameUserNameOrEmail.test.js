@@ -1,12 +1,12 @@
 'use strict';
 
-var _ptzValidations = require('@alanmarcell/ptz-validations');
-
-var V = _interopRequireWildcard(_ptzValidations);
-
 var _ptzAssert = require('ptz-assert');
 
 var assert = _interopRequireWildcard(_ptzAssert);
+
+var _ptzValidations = require('ptz-validations');
+
+var V = _interopRequireWildcard(_ptzValidations);
 
 var _index = require('./index');
 

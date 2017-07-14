@@ -1,5 +1,5 @@
-import * as V from '@alanmarcell/ptz-validations';
 import * as assert from 'ptz-assert';
+import * as V from 'ptz-validations';
 import * as User from './index';
 describe('otherUsersWithSameUserNameOrEmail', () => {
     it('do NOT add error when otherUsers is empty', () => {
