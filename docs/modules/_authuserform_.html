@@ -86,7 +86,7 @@
 					<div class="tsd-signature tsd-kind-icon">auth<wbr>User<wbr>Form<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;V.validate&lt;IAuthUserForm&gt;({userNameOrEmail: [validateUserNameOrEmail],//     userNameOrEmail: validateUserNameOrEmail({//     required: true,// }),password: getPasswordValidation(true)})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/polutz/ptz-user-domain/blob/112eda8/src/AuthUserForm.ts#L23">AuthUserForm.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/polutz/ptz-user-domain/blob/84855d9/src/AuthUserForm.ts#L23">AuthUserForm.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -125,7 +125,7 @@
 					<div class="tsd-signature tsd-kind-icon">validate<wbr>User<wbr>Name<wbr>OrEmail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurriedFunction2</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">IHaveValidation</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;R.curry((propName: string, obj: any) &#x3D;&gt; {const propValue &#x3D; R.prop&lt;string&gt;(propName, obj);const createUserValidation: V.IValidations &#x3D; { userNameOrEmail: userNameValidation };return propValue.indexOf(&#x27;@&#x27;) &gt;&#x3D; 0? V.isEmail(propName, obj): V.validate(createUserValidation)(obj);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/polutz/ptz-user-domain/blob/112eda8/src/AuthUserForm.ts#L9">AuthUserForm.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/polutz/ptz-user-domain/blob/84855d9/src/AuthUserForm.ts#L9">AuthUserForm.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
