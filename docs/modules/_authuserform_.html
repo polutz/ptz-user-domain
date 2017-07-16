@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;AuthUserForm&quot; | ptz-user-domain</title>
+	<title>&quot;AuthUserForm&quot; | @alanmarcell/ptz-user-domain</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">ptz-user-domain</a>
+					<a href="../index.html" class="title">@alanmarcell/ptz-user-domain</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -86,7 +86,7 @@
 					<div class="tsd-signature tsd-kind-icon">auth<wbr>User<wbr>Form<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;V.validate&lt;IAuthUserForm&gt;({userNameOrEmail: [validateUserNameOrEmail],//     userNameOrEmail: validateUserNameOrEmail({//     required: true,// }),password: getPasswordValidation(true)})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/polutz/ptz-user-domain/blob/84855d9/src/AuthUserForm.ts#L23">AuthUserForm.ts:23</a></li>
+							<li>Defined in <a href="https://github.com/polutz/ptz-user-domain/blob/01d0874/src/AuthUserForm.ts#L23">AuthUserForm.ts:23</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -125,7 +125,7 @@
 					<div class="tsd-signature tsd-kind-icon">validate<wbr>User<wbr>Name<wbr>OrEmail<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">CurriedFunction2</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">IHaveValidation</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;R.curry((propName: string, obj: any) &#x3D;&gt; {const propValue &#x3D; R.prop&lt;string&gt;(propName, obj);const createUserValidation: V.IValidations &#x3D; { userNameOrEmail: userNameValidation };return propValue.indexOf(&#x27;@&#x27;) &gt;&#x3D; 0? V.isEmail(propName, obj): V.validate(createUserValidation)(obj);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/polutz/ptz-user-domain/blob/84855d9/src/AuthUserForm.ts#L9">AuthUserForm.ts:9</a></li>
+							<li>Defined in <a href="https://github.com/polutz/ptz-user-domain/blob/01d0874/src/AuthUserForm.ts#L9">AuthUserForm.ts:9</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">

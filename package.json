@@ -1,6 +1,6 @@
 {
-  "name": "ptz-user-domain",
-  "version": "2.0.1",
+  "name": "@alanmarcell/ptz-user-domain",
+  "version": "2.0.3",
   "description": "Polutz User Domain.",
   "main": "dist/index.js",
   "typings": "src/index.ts",
@@ -47,7 +47,7 @@
   "dependencies": {
     "@types/mocha": "^2.2.41",
     "@types/node": "^8.0.13",
-    "ptz-core-domain": "^2.0.4",
+    "@alanmarcell/ptz-core-domain": "^2.0.4",
     "ptz-validations": "^3.0.1",
     "ptz-log": "^1.1.0"
   }
