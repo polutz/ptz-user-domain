@@ -7,31 +7,31 @@ exports.users = exports.allUsers = exports.alanmarcell = exports.angeloocana = e
 
 var _createUser = require('./createUser');
 
-var admin = exports.admin = (0, _createUser.createUser)({
+const admin = exports.admin = (0, _createUser.createUser)({
     displayName: 'Admin',
     email: 'dev@polutz.com',
     userName: 'admin',
     password: 'testtest'
 }); // Users for seed and test data
-var angeloocana = exports.angeloocana = (0, _createUser.createUser)({
+const angeloocana = exports.angeloocana = (0, _createUser.createUser)({
     displayName: 'Ângelo Ocanã',
     userName: 'angeloocana',
     email: 'angeloocana@gmail.com',
     password: 'testtest'
 });
-var alanmarcell = exports.alanmarcell = (0, _createUser.createUser)({
+const alanmarcell = exports.alanmarcell = (0, _createUser.createUser)({
     displayName: 'Alan Marcell',
     userName: 'alanmarcell',
     email: 'alanmarcell@live.com',
     password: 'testtest'
 });
-var allUsers = exports.allUsers = [admin, angeloocana, alanmarcell];
+const allUsers = exports.allUsers = [admin, angeloocana, alanmarcell];
 exports.default = allUsers;
-var users = exports.users = {
-    admin: admin,
-    angeloocana: angeloocana,
-    alanmarcell: alanmarcell,
-    allUsers: allUsers
+const users = exports.users = {
+    admin,
+    angeloocana,
+    alanmarcell,
+    allUsers
 };
 //# sourceMappingURL=users.js.map
 //# sourceMappingURL=users.js.map

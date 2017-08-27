@@ -22,15 +22,11 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
  * @param user current user.
  * @param otherUsers other users with same userName or email.
  */
-var otherUsersWithSameUserNameOrEmail = exports.otherUsersWithSameUserNameOrEmail = function otherUsersWithSameUserNameOrEmail(user, otherUsers) {
+const otherUsersWithSameUserNameOrEmail = exports.otherUsersWithSameUserNameOrEmail = (user, otherUsers) => {
     if (!otherUsers) return user;
-    var addError = V.addError(user);
-    if (otherUsers.filter(function (otherUser) {
-        return otherUser.userName === user.userName;
-    }).length > 0) return addError('userName', _allErrors2.default.ERROR_USER_USERNAME_IN_USE);
-    if (otherUsers.filter(function (otherUser) {
-        return otherUser.email === user.email;
-    }).length > 0) return addError('email', _allErrors2.default.ERROR_USER_EMAIL_IN_USE);
+    const addError = V.addError(user);
+    if (otherUsers.filter(otherUser => otherUser.userName === user.userName).length > 0) return addError('userName', _allErrors2.default.ERROR_USER_USERNAME_IN_USE);
+    if (otherUsers.filter(otherUser => otherUser.email === user.email).length > 0) return addError('email', _allErrors2.default.ERROR_USER_EMAIL_IN_USE);
     return user;
 };
 //# sourceMappingURL=otherUsersWithSameUserNameOrEmail.js.map

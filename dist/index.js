@@ -10,7 +10,7 @@ Object.keys(_AuthUserForm).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
-    get: function get() {
+    get: function () {
       return _AuthUserForm[key];
     }
   });
@@ -22,7 +22,7 @@ Object.keys(_allErrors).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
-    get: function get() {
+    get: function () {
       return _allErrors[key];
     }
   });
@@ -34,7 +34,7 @@ Object.keys(_createUser).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
-    get: function get() {
+    get: function () {
       return _createUser[key];
     }
   });
@@ -46,7 +46,7 @@ Object.keys(_users).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
-    get: function get() {
+    get: function () {
       return _users[key];
     }
   });
@@ -58,7 +58,7 @@ Object.keys(_updateUser).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
-    get: function get() {
+    get: function () {
       return _updateUser[key];
     }
   });
@@ -70,7 +70,7 @@ Object.keys(_otherUsersWithSameUserNameOrEmail).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   Object.defineProperty(exports, key, {
     enumerable: true,
-    get: function get() {
+    get: function () {
       return _otherUsersWithSameUserNameOrEmail[key];
     }
   });

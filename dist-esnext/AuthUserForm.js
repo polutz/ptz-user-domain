@@ -16,9 +16,6 @@ export const validateUserNameOrEmail = R.curry((propName, obj) => {
  */
 export const authUserForm = V.validate({
     userNameOrEmail: [validateUserNameOrEmail],
-    //     userNameOrEmail: validateUserNameOrEmail({
-    //     required: true,
-    // }),
     password: getPasswordValidation(true)
 });
 //# sourceMappingURL=AuthUserForm.js.map

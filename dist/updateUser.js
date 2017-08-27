@@ -8,19 +8,13 @@ Object.defineProperty(exports, "__esModule", {
  * @param oldUser
  * @param newUser
  */
-var updateUser = exports.updateUser = function updateUser(oldUser, _ref) {
-    var userName = _ref.userName,
-        email = _ref.email,
-        displayName = _ref.displayName,
-        passwordHash = _ref.passwordHash,
-        imgUrl = _ref.imgUrl;
-
+const updateUser = exports.updateUser = (oldUser, { userName, email, displayName, passwordHash, imgUrl }) => {
     return Object.assign({}, oldUser, {
-        userName: userName,
-        email: email,
-        displayName: displayName,
-        passwordHash: passwordHash,
-        imgUrl: imgUrl,
+        userName,
+        email,
+        displayName,
+        passwordHash,
+        imgUrl,
         dtChanged: new Date()
     });
 };

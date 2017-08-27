@@ -22,19 +22,16 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 /**
  * Validate UserName or E-mail to login.
  */
-var validateUserNameOrEmail = exports.validateUserNameOrEmail = _ramda2.default.curry(function (propName, obj) {
-    var propValue = _ramda2.default.prop(propName, obj);
-    var createUserValidation = { userNameOrEmail: _createUser.userNameValidation };
+const validateUserNameOrEmail = exports.validateUserNameOrEmail = _ramda2.default.curry((propName, obj) => {
+    const propValue = _ramda2.default.prop(propName, obj);
+    const createUserValidation = { userNameOrEmail: _createUser.userNameValidation };
     return propValue.indexOf('@') >= 0 ? V.isEmail(propName, obj) : V.validate(createUserValidation)(obj);
 });
 /**
  * Authenticate User Form.
  */
-var authUserForm = exports.authUserForm = V.validate({
+const authUserForm = exports.authUserForm = V.validate({
     userNameOrEmail: [validateUserNameOrEmail],
-    //     userNameOrEmail: validateUserNameOrEmail({
-    //     required: true,
-    // }),
     password: (0, _createUser.getPasswordValidation)(true)
 });
 //# sourceMappingURL=AuthUserForm.js.map

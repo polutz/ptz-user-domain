@@ -22,8 +22,5 @@ export const validateUserNameOrEmail = R.curry((propName: string, obj: any) => {
  */
 export const authUserForm = V.validate<IAuthUserForm>({
     userNameOrEmail: [validateUserNameOrEmail],
-    //     userNameOrEmail: validateUserNameOrEmail({
-    //     required: true,
-    // }),
     password: getPasswordValidation(true)
 });
